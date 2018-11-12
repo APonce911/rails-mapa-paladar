@@ -76,7 +76,7 @@
 <part>id</part>
 </key>
 </table>
-<table x="600" y="205" name="comments">
+<table x="604" y="200" name="comments">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -93,8 +93,9 @@
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
+<comment>se eu virar uma rede social, devo relacionar o nickname com user ID</comment>
 </table>
-<table x="597" y="86" name="photos">
+<table x="597" y="86" name="images">
 <row name="id" null="1" autoincrement="1">
 <datatype>INTEGER</datatype>
 <default>NULL</default></row>
@@ -110,5 +111,3 @@
 </key>
 </table>
 </sql>
-
-
