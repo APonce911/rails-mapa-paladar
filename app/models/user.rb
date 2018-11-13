@@ -5,8 +5,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:instagram]
 
 def self.from_omniauth(auth)
+puts  "======================================================================"
+puts auth
+puts  "======================================================================"
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.nickname + "@mapa.com"
+    user.avatar = auth.info.image
     user.password = Devise.friendly_token[0, 20]
 
     # user.name = auth.info.name   # assuming the user model has a name
