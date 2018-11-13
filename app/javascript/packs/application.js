@@ -1,10 +1,12 @@
 import "bootstrap";
 
 const form = document.getElementById("form");
+console.log(form);
 form.addEventListener("submit", (event) => {
   event.preventDefault();
 
   const name = document.getElementById("name");
+  console.log(name.value);
 
   fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${name.value}&key=AIzaSyBeteHQv6Rj_mOJv5l-1oR-PCi-khurkSU`)
     .then(response => response.json())
@@ -12,7 +14,6 @@ form.addEventListener("submit", (event) => {
       const lat = data.results[0].geometry.location.lat;
       const lng = data.results[0].geometry.location.lng;
       console.log(typeof lat);
-
 
       form.insertAdjacentHTML("beforeend", `<h2>latitude: ${lat}</h2>`);
       form.insertAdjacentHTML("beforeend", `<h2>longitude: ${lng}</h2>`);
