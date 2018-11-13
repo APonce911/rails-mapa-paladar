@@ -1,1 +1,21 @@
 // Specific CSS for your home-page
+  // .page{
+  //   background-size: cover !important;
+  //   // height: 100vh;
+  //   // width: 100vh;
+  // }
+
+.page{
+  text-align: center;
+  height: 100vh;
+  background-size: cover !important;
+  z-index: -1;
+
+
+}
+
+.login-box{
+  background-color: $light-red;
+  height: 300px;
+  align-content: center;
+}
