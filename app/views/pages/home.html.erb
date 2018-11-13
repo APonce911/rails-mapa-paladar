@@ -1,7 +1,5 @@
-<h1>Mapa Paladar</h1>
-<p><%= @user %></p>
-<p><%= @user.class %></p>
+<h1>Mapa Paladar Home</h1>
 
-
-<p><%= link_to 'Privacy Policy', privacypolicy_path %></p>
-
+<% unless user_signed_in? %>
+  <p><%= render 'components/login' %></p>
+<% end %>
