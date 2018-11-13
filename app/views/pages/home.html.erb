@@ -1,5 +1,15 @@
-<h1>Mapa Paladar Home</h1>
 
-<% unless user_signed_in? %>
-  <p><%= render 'components/login' %></p>
-<% end %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-6 col-xs-offset-3">
+      <h1>Mapa Paladar</h1>
+
+      <% unless user_signed_in? %>
+        <p><%= render 'components/login' %></p>
+      <% end %>
+
+    </div>
+  </div>
+</div>
+
