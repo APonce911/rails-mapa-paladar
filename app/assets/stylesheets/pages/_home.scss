@@ -10,12 +10,19 @@
   height: 100vh;
   background-size: cover !important;
   z-index: -1;
-
-
 }
-
+.page-title {
+  font-family: 'Pacifico' !important;
+  color: white;  
+  position: absolute;
+  width: 100%;
+  margin: 30px auto;
+}
 .login-box{
   background-color: $light-red;
   height: 300px;
-  align-content: center;
+  margin-top: 50px;
+}
+.login-links {
+  margin: 200px auto;
 }
