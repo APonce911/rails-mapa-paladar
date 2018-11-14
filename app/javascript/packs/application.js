@@ -8,7 +8,7 @@ form.addEventListener("submit", (event) => {
   const name = document.getElementById("name");
   console.log(name.value);
 
-  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${name.value}&key=AIzaSyBeteHQv6Rj_mOJv5l-1oR-PCi-khurkSU`)
+  fetch(`https://maps.googleapis.com/maps/api/geocode/json?address=${name.value}&key=ENV['GOOGLEMAPS_API_KEY']`)
     .then(response => response.json())
     .then((data) => {
       const lat = data.results[0].geometry.location.lat;
