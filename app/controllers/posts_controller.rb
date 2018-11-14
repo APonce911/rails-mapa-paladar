@@ -22,8 +22,10 @@ private
         @post[:lat] = element["location"]["latitude"]
         @post[:lng] = element["location"]["longitude"]
         @post[:restaurant_name] = element["location"]["name"]
-        @post.save
+        # @post.save
         create_images(index)
+        create_comments(@post[:ig_id])
+
       end
     end
 
@@ -40,10 +42,21 @@ private
     else
       image = Image.create(post_id: @post.id)
       image[:url] = @posts["data"][index]["images"]["standard_resolution"]["url"]
-      image.save
+      # image.save
     end
   end
 
+  def create_comments(post_id)
+    parse_comments(post_id)
+    p "====================comments for this post==================="
+    p @comments
+  end
+
+  def parse_comments(post_id)
+    url = "https://api.instagram.com/v1/media/" + post_id + "/comments?access_token=" + ENV['INSTAGRAM_ACCESS_TOKEN']
+    comments_serialized = open(url).read
+    @comments = JSON.parse(comments_serialized)
+  end
 
   def parse_posts
     url ="https://api.instagram.com/v1/users/self/media/recent/?access_token=" + ENV['INSTAGRAM_ACCESS_TOKEN']
