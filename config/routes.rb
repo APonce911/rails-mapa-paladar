@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   root to: 'pages#home'
   get 'privacypolicy', to: "pages#privacypolicy"
-
-  devise_for :users, :path => 'users'
   get 'components', to: "pages#components"
    # devise_for :users, :path => 'users'
   devise_for :users, :path => 'users', :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
