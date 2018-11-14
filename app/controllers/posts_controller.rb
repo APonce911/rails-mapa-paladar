@@ -22,7 +22,7 @@ private
         @post[:lat] = element["location"]["latitude"]
         @post[:lng] = element["location"]["longitude"]
         @post[:restaurant_name] = element["location"]["name"]
-        # @post.save
+        @post.save
         create_images(index)
         create_comments(@post[:ig_id])
 
@@ -42,14 +42,20 @@ private
     else
       image = Image.create(post_id: @post.id)
       image[:url] = @posts["data"][index]["images"]["standard_resolution"]["url"]
-      # image.save
+      image.save
     end
   end
 
-  def create_comments(post_id)
-    parse_comments(post_id)
-    p "====================comments for this post==================="
-    p @comments
+  def create_comments(ig_id)
+    parse_comments(ig_id)
+    @comments["data"].each do |element|
+      if element["from"] != nil
+        @comment = Comment.create(post_id: @post.id)
+        @comment[:nickname] = element["from"]["username"]
+        @comment[:text] = element["text"]
+        @comment.save
+      end
+    end
   end
 
   def parse_comments(post_id)
