@@ -1,3 +1,17 @@
-<h1>Hello World</h1>
-<p><%= link_to 'Privacy Policy', privacypolicy_path %></p>
+<div class="page" style="background-image: url(<%=image_path 'map-img.png' %>);">
+  <%= render 'shared/navbar' %>
+  <div class="container">
+    <div class="row">
+      <% unless user_signed_in? %>
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="login-box">
+            <h1>Mapa Paladar</h1>
+            <p><%= render 'components/login' %></p>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
 
