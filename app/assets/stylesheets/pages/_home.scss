@@ -19,10 +19,17 @@
   margin: 30px auto;
 }
 .login-box{
-  background-color: $light-red;
+  background-color: #fcbdbde8;
   height: 300px;
   margin-top: 50px;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px #b6b6b608, 0 6px 20px #b6b6b6;
 }
 .login-links {
   margin: 200px auto;
+}
+
+.privacy-link {
+  color: white;
+  opacity: 0.5;
 }
