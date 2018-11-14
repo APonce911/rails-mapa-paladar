@@ -7,6 +7,15 @@
             <h1 class="page-title">Mapa Paladar</h1>
             <div class="login-links"><p><%= render 'components/login' %></p></div>
           </div>
+      <% else  %>
+
+        <%= form_tag posts_path do %>
+          <%#= hidden_field_tag 'teddy_id', @teddy.id %>
+          <%= submit_tag 'share your content', class: 'btn btn-primary' %>
+        <% end %>
+
+        <%#= link_to 'share your content', posts_path %>
+
       <% end %>
     </div>
   </div>
