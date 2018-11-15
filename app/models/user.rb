@@ -1,13 +1,12 @@
 class User < ApplicationRecord
+  has_many :posts
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :omniauthable, :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :omniauth_providers => [:instagram]
 
 def self.from_omniauth(auth)
-puts  "======================================================================"
-puts auth
-puts  "======================================================================"
+
   where(provider: auth.provider, uid: auth.uid).first_or_create do |user|
     user.email = auth.info.nickname + "@mapa.com"
     user.avatar = auth.info.image

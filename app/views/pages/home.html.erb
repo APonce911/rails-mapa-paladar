@@ -3,21 +3,31 @@
   <%= render 'shared/navbar' %>
   <div class="container">
     <div class="row">
+
       <% if user_signed_in? %>
+
         <div
           id="map"
           style="width: 100%;
-          height: 601px;">
+          height: 600px;">
         </div>
+
+        <%= form_tag posts_path do %>
+          <%#= hidden_field_tag 'teddy_id', @teddy.id %>
+          <%= submit_tag 'share your content', class: 'btn btn-primary' %>
+        <% end %>
+
       <% else  %>
+
         <div class="col-xs-6 col-xs-offset-3">
           <div class="login-box">
             <h1>Mapa Paladar</h1>
             <p><%= render 'components/login' %></p>
           </div>
+
       <% end %>
+
+
     </div>
   </div>
 </div>
-
-
