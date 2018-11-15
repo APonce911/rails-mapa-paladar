@@ -1,8 +1,7 @@
-require 'json'
 require 'open-uri'
-require 'date'
+
 class PostsController < ApplicationController
-before_action :parse_posts
+  before_action :parse_posts
 
   def create
     create_posts
