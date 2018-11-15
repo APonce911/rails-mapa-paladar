@@ -5,7 +5,9 @@
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-    <%= link_to "share your content", "#", class: "share-content" %>
+    <%= form_tag posts_path do %>
+      <%= submit_tag 'share your content', class: 'share-content' %>
+    <% end %>
 
     <% if user_signed_in? %>
 
