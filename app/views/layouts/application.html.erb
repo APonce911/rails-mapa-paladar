@@ -15,7 +15,7 @@
 
     <%= yield %>
     <%= javascript_include_tag 'application' %>
-    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=AIzaSyAkqSItCJr1uuGgMSZn8MqxM6CQ4o23Gi8" %>
+    <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
     <%= javascript_pack_tag 'application' %>
     <%= javascript_pack_tag "map" %>
   </body>
