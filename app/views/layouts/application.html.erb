@@ -9,11 +9,14 @@
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%#= stylesheet_pack_tag 'application', media: 'all' %> <!-- Uncomment if you import CSS in app/javascript/packs/application.js -->
   </head>
-  <body>
+  <body class="body-fixed">
 
     <%= render 'shared/flashes' %>
-
+    <%if user_signed_in? %>
+      <%= render 'shared/navbar' %>
+    <% end %>
     <%= yield %>
+
     <%= javascript_include_tag 'application' %>
     <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
     <%= javascript_pack_tag 'application' %>

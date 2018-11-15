@@ -1,3 +1,6 @@
-
-<p> <%= link_to "Sign in with #{OmniAuth::Utils.camelize(:instagram)}", user_instagram_omniauth_authorize_path, class:"btn btn-success" %><br/></p>
-<p class='privacy-link'><%= link_to 'Privacy Policy', privacypolicy_path%></p>
+<p>
+  <%= link_to "Sign in with #{OmniAuth::Utils.camelize(:instagram)}", user_instagram_omniauth_authorize_path, class:"btn btn-success" %>
+</p>
+<p class='privacy-link'>
+  <%= link_to 'Privacy Policy', privacypolicy_path%>
+</p>
