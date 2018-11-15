@@ -1,35 +1,29 @@
-// Specific CSS for your home-page
-  // .page{
-  //   background-size: cover !important;
-  //   // height: 100vh;
-  //   // width: 100vh;
-  // }
 
-.page{
-  text-align: center;
-  height: 100vh;
-  background-size: cover !important;
-  z-index: -1;
-}
+
 .page-title {
   font-family: 'Pacifico' !important;
-  color: white;  
+  color: white;
   position: absolute;
   width: 100%;
   margin: 30px auto;
 }
+
 .login-box{
   background-color: #fcbdbde8;
   height: 300px;
   margin-top: 50px;
   border-radius: 5px;
   box-shadow: 0 4px 8px #b6b6b608, 0 6px 20px #b6b6b6;
+  text-align: center;
 }
+
+
 .login-links {
-  margin: 200px auto;
+  margin: 125px auto;
 }
 
 .privacy-link {
   color: white;
   opacity: 0.5;
 }
+
