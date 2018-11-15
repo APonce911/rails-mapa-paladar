@@ -1,33 +1,33 @@
-<% if user_signed_in? %>
+<div class="page">
+  <!-- TO DO: tirar a navbar da home. Te que ficar no _navbar.html.erb. Artur que disse -->
   <%= render 'shared/navbar' %>
-  <div class="page">
-    <div class="container">
-      <div class="row">
+  <div class="container">
+    <div class="row">
+
+      <% if user_signed_in? %>
+
+        <div
+          id="map"
+          style="width: 100%;
+          height: 600px;">
+        </div>
+
         <%= form_tag posts_path do %>
           <%#= hidden_field_tag 'teddy_id', @teddy.id %>
           <%= submit_tag 'share your content', class: 'btn btn-primary' %>
-        <% end %> 
-        <div id="map" style="width: 100%; height: 600px;">
-          <!-- Map image will go here -->
-        </div> 
-      </div>
+        <% end %>
+
+      <% else  %>
+
+        <div class="col-xs-6 col-xs-offset-3">
+          <div class="login-box">
+            <h1>Mapa Paladar</h1>
+            <p><%= render 'components/login' %></p>
+          </div>
+
+      <% end %>
+
+
     </div>
   </div>
-  <% else %>
-    <%= render 'shared/navbar' %>
-      <div class="page">
-        <div class="container">
-          <div class="row">
-            <div class="col-xs-6 col-xs-offset-3">
-              <div class="login-box">
-                <h1>Mapa Paladar</h1>
-                <p><%= render 'components/login' %></p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    <%#= link_to 'share your content', posts_path %>
-<% end %>
-
-
+</div>
