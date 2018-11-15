@@ -1,16 +1,22 @@
+
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :privacypolicy]
-  # before_action :set_user
 
   def home
 
-    # @client = Instagram.client(:access_token => session[:access_token])
-    # @response = @client.user_recent_media
-
-    # @instagram = Instagram.user_recent_media(ENV['INSTAGRAM_CLIENT_ID'], {:count => 1})
   end
 
-  # def set_user
-  #   @user =
-  # end
+private
+
+  def parse_comments(post_id)
+    url = "https://api.instagram.com/v1/media/" + post_id + "/comments?access_token=" + ENV['INSTAGRAM_ACCESS_TOKEN']
+    comments_serialized = open(url).read
+    comments = JSON.parse(comments_serialized)
+
+    puts "# ===============================DATA START==========================="
+    puts comments
+    puts "# ===============================DATA END============================="
+
+    return comments
+  end
 end

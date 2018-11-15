@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_13_202932) do
+ActiveRecord::Schema.define(version: 2018_11_14_215457) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(version: 2018_11_13_202932) do
     t.float "lng"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ig_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
