@@ -126,10 +126,28 @@ if (map) {
         ...style,
   })
 
-  // var teste  <%= @teste %>;
-  var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
-  // CUSTOM MARKER
+  // Wait for DOM to load
+  // SVG.on(document, 'DOMContentLoaded', function() {
+  //   var draw = SVG('drawing')
+  // })
   
+  // var teste  <%= @teste %>;
+  
+
+  // CUSTOM MARKER
+  var icon = {
+    path: "M0 0V52.231H2.0863C2.36766 52.231 2.59574 52.4576 2.59574 52.7371V61.8042L18.5881 52.5081C18.9003 52.3266 19.2555 52.231 19.6172 52.231H54V0H0Z",
+        fillColor: '#DD5A58',
+        fillOpacity: .6,
+        anchor: new google.maps.Point(0,0),
+        // strokeWeight: 0,
+        // scale: iconSize
+  }
+  // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
+  // NEW MARKER FUNCTION
+  var marker = new google.maps.Marker({position: myLatlng,
+  icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
+
   JSPosts.forEach((post) => {
     // console.log(typeof post);
     // console.log(post["lat"]);
