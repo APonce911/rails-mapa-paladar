@@ -15,14 +15,13 @@
 
 
 .login-box{
-  background-color: #fcbdbde8;
-
-  border-radius: 5px;
+  background-color: #ffffff91;
+  border-radius: 49% 93% 95% 81% / 48% 48% 66% 15%;
   box-shadow: 0 4px 8px #b6b6b608, 0 6px 20px #b6b6b6;
-
+  background-image: linear-gradient( 135deg, #f6d242d6 20%, #ff52e5c7 90%);
   text-align: center;
-  width: 350px;
-  height: 400px;
+  width: 450px;
+  height: 500px;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
