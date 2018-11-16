@@ -1,13 +1,16 @@
 import GMaps from 'gmaps/gmaps.js';
+
 // // if HTML DOM Element that contains the map is found...
-if (document.getElementById('map')){
+let map = document.getElementById('map')
+if (map){
+
 
     // Coordinates to center the map
-  var myLatlng = new google.maps.LatLng(52.525595,13.393085);
+  var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
 
     // Other options for the map, pretty much selfexplanatory
   var mapOptions = {
-        zoom: 14,
+        zoom: 16,
         center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
   };
@@ -119,12 +122,20 @@ if (document.getElementById('map')){
   ]}
 
   // Attach a map to the DOM Element, with the defined settings
-  var map = new google.maps.Map(document.getElementById('map'), {
+  map = new google.maps.Map(document.getElementById('map'), {
         ...mapOptions,
-        ...style
+        ...style,
   })
 
-
-
+  // var teste  <%= @teste %>;
   var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
-}
+  JSPosts.forEach((post) => {
+    // console.log(typeof post);
+    // console.log(post["lat"]);
+    // console.log(post["lng"]);
+    var lat = post["lat"];
+    var lng = post["lng"];
+    var PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
+  });
+
+  }

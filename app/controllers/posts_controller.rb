@@ -64,6 +64,7 @@ private
   end
 
   def parse_posts
+    @teste = [0, 9, 5, 35]
     url ="https://api.instagram.com/v1/users/self/media/recent/?access_token=" + ENV['INSTAGRAM_ACCESS_TOKEN']
     posts_serialized = open(url).read
     @posts = JSON.parse(posts_serialized)
