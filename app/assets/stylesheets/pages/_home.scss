@@ -32,6 +32,16 @@
   font-family: 'Pacifico' !important;
   color: white;
   margin-bottom: 25px;
+  // text-shadow: -15px 5px 20px #ced0d3;
+  // letter-spacing: 0.3em;
+  // transition: all 0.25s ease-out;
+  // text-transform: uppercase;
+  user-select: none;
+  font-size: 57px;
+}
+
+.page-title:hover {
+    // text-shadow: -16px 6px 15px #ced0d3;  
 }
 
 .login-links {
