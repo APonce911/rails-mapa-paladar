@@ -148,7 +148,7 @@ if (map) {
   // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   var marker = new google.maps.Marker({position: myLatlng,
-  icon: 'https://scontent.cdninstagram.com/vp/b43a00f859bd4709096c5b0f81429568/5C797FE0/t51.2885-15/sh0.08/e35/s640x640/18646706_1648811035147601_6773159886738948096_n.jpg', map: map, animation: google.maps.Animation.BOUNCE});
+  icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
 
   JSPosts.forEach((post) => {
     // console.log(typeof post);
