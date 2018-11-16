@@ -2,7 +2,7 @@ import GMaps from 'gmaps/gmaps.js';
 
 // // if HTML DOM Element that contains the map is found...
 let map = document.getElementById('map')
-if (map){
+if (map) {
 
     // Coordinates to center the map
   var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
@@ -128,6 +128,8 @@ if (map){
 
   // var teste  <%= @teste %>;
   var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
+  // CUSTOM MARKER
+  
   JSPosts.forEach((post) => {
     // console.log(typeof post);
     // console.log(post["lat"]);
