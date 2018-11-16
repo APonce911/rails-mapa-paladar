@@ -145,7 +145,6 @@ if (map) {
   
   // var teste  <%= @teste %>;
   
- 
   // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   var marker = new google.maps.Marker({position: myLatlng,
