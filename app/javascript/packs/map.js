@@ -22,9 +22,9 @@ if (map) {
         anchor: new google.maps.Point(0,10),
         strokeWeight: 0,
         // scale: iconSize
-        borderStyle: 'solid' 
+        borderStyle: 'solid'
   }
-  
+
   // STYLE
   const style = {
       styles: [
@@ -142,13 +142,13 @@ if (map) {
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
   // })
-  
+
   // var teste  <%= @teste %>;
-  
+
   // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   var marker = new google.maps.Marker({position: myLatlng,
-  icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
+  icon: 'https://scontent.cdninstagram.com/vp/b43a00f859bd4709096c5b0f81429568/5C797FE0/t51.2885-15/sh0.08/e35/s640x640/18646706_1648811035147601_6773159886738948096_n.jpg', map: map, animation: google.maps.Animation.BOUNCE});
 
   JSPosts.forEach((post) => {
     // console.log(typeof post);

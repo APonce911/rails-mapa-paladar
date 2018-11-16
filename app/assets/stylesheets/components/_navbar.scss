@@ -76,14 +76,19 @@
   border-top: 1px solid #E6E6E6;
 }
 
-.btn-success {
+.share-content {
   color: grey;
   border-color: lightgrey;
   background-color: #ffffffa6;
   font-size: small;
+  // margin-left: 30px;
+
 }
 
-.page-title {
+.title-nav {
+  font-family: 'Pacifico';
+  color:white;
   padding-right: 30px;
-  font-size: 26px;
+  font-size: 25px !important;
+  margin-top: 25px;
 }
