@@ -1,7 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
 
-  <h3 class="page-title">Mapa Paladar</h3>
+  <h4 class="page-title">Mapa Paladar</h4>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
@@ -21,7 +21,7 @@
           <%= image_tag current_user.avatar, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
-              <%= link_to "#" do %>
+              <%= link_to root_path do %>
                 <i class="far fa-map"></i> <%= t(".map", default: " Map") %>
               <% end %>
             </li>

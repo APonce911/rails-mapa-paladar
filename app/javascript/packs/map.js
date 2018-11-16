@@ -4,7 +4,6 @@ import GMaps from 'gmaps/gmaps.js';
 let map = document.getElementById('map')
 if (map){
 
-
     // Coordinates to center the map
   var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
 
