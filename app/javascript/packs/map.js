@@ -1,24 +1,24 @@
 import GMaps from 'gmaps/gmaps.js';
 
-// // if HTML DOM Element that contains the map is found...
+//===========USER SIGN IN CONDITIONALITY FOR MAP SIZE
 console.log(userSignedIn)
 let map = document.getElementById('map')
-
 if(userSignedIn){
   map.classList.remove("unlogged-map");
 } else {
   map.classList.add("unlogged-map");
 };
 
+// if HTML DOM Element that contains the map is found...
 if (map) {
 
-  // Coordinates to center the map
-  var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
+  // OLD Coordinates to center the map
+  // var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
 
   // Other options for the map, pretty much selfexplanatory
   var mapOptions = {
         zoom: 16,
-        center: myLatlng,
+        // center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -153,17 +153,32 @@ if (map) {
   //   var draw = SVG('drawing')
   // })
 
-  // var teste  <%= @teste %>;
 
-  // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
+  //==========OLD MARKER FUNCTION ==================== Changed to my location code
+  // var marker = new google.maps.Marker({ position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
-  var marker = new google.maps.Marker({position: myLatlng,
-  icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
-
+  // var marker = new google.maps.Marker({position: myLatlng,icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
+  //=========PINS FOR POSTS=====================================================
   JSPosts.forEach((post) => {
-    var lat = post["lat"];
-    var lng = post["lng"];
-    var PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
+    const lat = post["lat"];
+    const lng = post["lng"];
+    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
+  });
+
+  //==========MY LOCATION CODE=================================================
+  //=====we need to verify the precision of this geocode=======================
+  let myMarker = new google.maps.Marker({
+    clickable: false,
+    map: map,
+    animation: google.maps.Animation.BOUNCE
+  });
+
+  if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
+      var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      myMarker.setPosition(myLocation);
+      map.setCenter(myLocation)
+  }, function(error) {
+      // ...
   });
 
 };
