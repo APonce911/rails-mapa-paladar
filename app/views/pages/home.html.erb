@@ -9,9 +9,10 @@
   </div>
 
 <% end %>
-<div id="map" > </div>
+<div id="map"> </div>
 
 <script>
-  var JSPosts = <%= @posts %>;
+  let JSPosts = <%= @posts %>;
+  let userSignedIn = <%= user_signed_in? %>
 </script>
 

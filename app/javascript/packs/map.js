@@ -1,7 +1,15 @@
 import GMaps from 'gmaps/gmaps.js';
 
 // // if HTML DOM Element that contains the map is found...
+console.log(userSignedIn)
 let map = document.getElementById('map')
+
+if(userSignedIn){
+  map.classList.remove("unlogged-map");
+} else {
+  map.classList.add("unlogged-map");
+};
+
 if (map) {
 
   // Coordinates to center the map
@@ -158,6 +166,6 @@ if (map) {
     var PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
   });
 
-  }
+};
 
 

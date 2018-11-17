@@ -1,5 +1,9 @@
 #map{
   width: 100%;
-  // height: 50%;
   height: calc(100vh - 70px);
+  // height: 100vh;
+}
+
+.unlogged-map{
+  height: 100vh !important;
 }
