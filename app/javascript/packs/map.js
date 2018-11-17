@@ -12,13 +12,13 @@ if(userSignedIn){
 // if HTML DOM Element that contains the map is found...
 if (map) {
 
-  // Coordinates to center the map
-  var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
+  // OLD Coordinates to center the map
+  // var myLatlng = new google.maps.LatLng(41.8874314503,12.4886930452);
 
   // Other options for the map, pretty much selfexplanatory
   var mapOptions = {
         zoom: 16,
-        center: myLatlng,
+        // center: myLatlng,
         mapTypeId: google.maps.MapTypeId.ROADMAP
   };
 
@@ -166,17 +166,17 @@ if (map) {
   });
 
   //==========MY LOCATION CODE=================================================
-  //=====we need to verify the precision of this geocode
-  let MyMarker = new google.maps.Marker({
+  //=====we need to verify the precision of this geocode=======================
+  let myMarker = new google.maps.Marker({
     clickable: false,
-    position: myLatlng,
     map: map,
     animation: google.maps.Animation.BOUNCE
   });
 
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
-      var me = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
-      MyMarker.setPosition(me);
+      var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
+      myMarker.setPosition(myLocation);
+      map.setCenter(myLocation)
   }, function(error) {
       // ...
   });
