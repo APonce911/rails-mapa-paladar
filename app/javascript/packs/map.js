@@ -1,7 +1,15 @@
 import GMaps from 'gmaps/gmaps.js';
 
 // // if HTML DOM Element that contains the map is found...
+console.log(userSignedIn)
 let map = document.getElementById('map')
+
+if(userSignedIn){
+  map.classList.remove("unlogged-map");
+} else {
+  map.classList.add("unlogged-map");
+};
+
 if (map) {
 
   // Coordinates to center the map
@@ -22,9 +30,9 @@ if (map) {
         anchor: new google.maps.Point(0,10),
         strokeWeight: 0,
         // scale: iconSize
-        borderStyle: 'solid' 
+        borderStyle: 'solid'
   }
-  
+
   // STYLE
   const style = {
       styles: [
@@ -136,30 +144,28 @@ if (map) {
   map = new google.maps.Map(document.getElementById('map'), {
         ...mapOptions,
         ...style,
+        disableDefaultUI: true,
+        zoomControl:true
   })
 
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
   // })
-  
+
   // var teste  <%= @teste %>;
-  
+
   // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   var marker = new google.maps.Marker({position: myLatlng,
   icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
 
   JSPosts.forEach((post) => {
-    // console.log(typeof post);
-    // console.log(post["lat"]);
-    // console.log(post["lng"]);
     var lat = post["lat"];
     var lng = post["lng"];
     var PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
   });
 
-  }
+};
 
-  // vamos ver se com essa mudança o negócio funciona
 

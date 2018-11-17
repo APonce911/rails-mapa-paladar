@@ -1,9 +1,7 @@
-<% if user_signed_in? %>
-
-<% else  %>
+<% unless user_signed_in? %>
   <div class="float-page">
     <div class="login-box animated slideInDown">
-      <h1 class="page-title shadows">Mapa Paladar</h1>
+      <h2 class="logo">Mapa Paladar</h2>
       <div class="login-links">
         <%= render 'components/login' %>
       </div>
@@ -11,9 +9,10 @@
   </div>
 
 <% end %>
-<div id="map" style="width: 100%; height: 99vh ;"> </div>
+<div id="map"> </div>
 
 <script>
-  var JSPosts = <%= @posts %>;
+  let JSPosts = <%= @posts %>;
+  let userSignedIn = <%= user_signed_in? %>
 </script>
 
