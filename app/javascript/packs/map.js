@@ -22,9 +22,9 @@ if (map) {
         anchor: new google.maps.Point(0,10),
         strokeWeight: 0,
         // scale: iconSize
-        borderStyle: 'solid' 
+        borderStyle: 'solid'
   }
-  
+
   // STYLE
   const style = {
       styles: [
@@ -136,15 +136,17 @@ if (map) {
   map = new google.maps.Map(document.getElementById('map'), {
         ...mapOptions,
         ...style,
+        disableDefaultUI: true,
+        zoomControl:true
   })
 
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
   // })
-  
+
   // var teste  <%= @teste %>;
-  
+
   // var marker = new google.maps.Marker({position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   var marker = new google.maps.Marker({position: myLatlng,

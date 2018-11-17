@@ -1,6 +1,4 @@
-<% if user_signed_in? %>
-
-<% else  %>
+<% unless user_signed_in? %>
   <div class="float-page">
     <div class="login-box animated slideInDown">
       <h2 class="logo">Mapa Paladar</h2>
