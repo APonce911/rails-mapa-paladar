@@ -57,8 +57,15 @@
 
 .navbar-wagon {
   background-color: #fcbdbd9c;
+  padding-right: 0px;
+  padding-left:  0px;
+
+}
+
+@media (max-width: 320px) {
+  width: 350px;
 }
 
 #title-login {
-
+// fazer a mesma coisa com a media query, mas aumentar o tamanho do logo qnd as telas forem maiores
 }

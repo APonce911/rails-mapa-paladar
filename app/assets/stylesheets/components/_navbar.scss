@@ -19,6 +19,8 @@
   height: 35px;
   width: 35px;
   border-radius: 50%;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 /* Right section */
@@ -31,7 +33,6 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
 }
 
 /* Navbar link */
@@ -87,8 +88,19 @@
 
 .title-nav {
   font-family: 'Pacifico';
-  color:white;
-  padding-right: 30px;
-  font-size: 25px !important;
-  margin-top: 25px;
+  // color:white;
+  // padding-right: 0px;
+  // font-size: 25px !important;
+  margin: 25px 25px;
+  display: block;
+  // width: 350px;
+  // margin: 0 auto;
 }
+
+// @media (max-width: 320px) {
+
+// .title-nav {
+//  display: block;
+// }
+
+// }
