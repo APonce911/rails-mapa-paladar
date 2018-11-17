@@ -153,9 +153,6 @@ if (map) {
   icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
 
   JSPosts.forEach((post) => {
-    // console.log(typeof post);
-    // console.log(post["lat"]);
-    // console.log(post["lng"]);
     var lat = post["lat"];
     var lng = post["lng"];
     var PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
@@ -163,5 +160,4 @@ if (map) {
 
   }
 
-  // vamos ver se com essa mudança o negócio funciona
 
