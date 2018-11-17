@@ -178,7 +178,7 @@ if (map) {
       myMarker.setPosition(myLocation);
       map.setCenter(myLocation)
   }, function(error) {
-      // ...
+      window.alert('Hello dear user, please allow us to access your location');
   });
 
 };
