@@ -167,19 +167,26 @@ if (map) {
 
   //==========MY LOCATION CODE=================================================
   //=====we need to verify the precision of this geocode=======================
+
+  const geoOptions = {
+    enableHighAccuracy: true,
+    maximumAge: 0,
+    timeout: 4000
+  };
+
   let myMarker = new google.maps.Marker({
     clickable: false,
     map: map,
     animation: google.maps.Animation.BOUNCE
   });
-
+                                                    // watchPosition(botao center not working) or getCurrentPosition or clearWatch
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
       var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       myMarker.setPosition(myLocation);
       map.setCenter(myLocation)
   }, function(error) {
       window.alert('Hello dear user, please allow us to access your location');
-  });
+  }, geoOptions);
 
   // =====CENTER ON ME BUTTOM===================================================
   function addYourLocationButton(map, marker) {
