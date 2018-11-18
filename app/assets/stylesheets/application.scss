@@ -1,7 +1,9 @@
-.body-fixed {
-  overflow: hidden;
+// .body-fixed {
+//   overflow: hidden;
 
-}
+// }
+
+html, body {margin: 0; height: 100%; overflow: hidden}
 
 // Graphical variables
 @import "config/fonts";
