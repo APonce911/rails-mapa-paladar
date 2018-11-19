@@ -58,23 +58,25 @@ private
   end
 
   def parse_comments(post_id)
-    url = "https://api.instagram.com/v1/media/" + post_id + "/comments?access_token=" + ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
+    url = "https://api.instagram.com/v1/media/" + post_id + "/comments?access_token=" + @env
     comments_serialized = open(url).read
     @comments = JSON.parse(comments_serialized)
   end
 
   def parse_posts
 
-    if current_user.email == "airton_p@mapa.com"
-      env = ENV['INSTAGRAM_ACCESS_TOKEN']
-    else
-      env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
-    end
-
-    url ="https://api.instagram.com/v1/users/self/media/recent/?access_token=" + env
+    define_env
+    url ="https://api.instagram.com/v1/users/self/media/recent/?access_token=" + @env
     posts_serialized = open(url).read
     @posts = JSON.parse(posts_serialized)
   end
 
+def define_env
+    if current_user.email == "airton_p@mapa.com"
+      @env = ENV['INSTAGRAM_ACCESS_TOKEN']
+    else
+      @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
+    end
+end
 
 end
