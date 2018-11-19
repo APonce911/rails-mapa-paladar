@@ -6,5 +6,8 @@ class PagesController < ApplicationController
     @posts = Post.all.to_json.html_safe
   end
 
+  def privacypolicy
+  end
+
 
 end

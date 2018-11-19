@@ -16,3 +16,5 @@
   let userSignedIn = <%= user_signed_in? %>
 </script>
 
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
+<%= javascript_pack_tag "map" %>

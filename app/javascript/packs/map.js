@@ -1,7 +1,7 @@
 import GMaps from 'gmaps/gmaps.js';
 
 //===========USER SIGN IN CONDITIONALITY FOR MAP SIZE
-console.log(userSignedIn)
+// console.log(userSignedIn)
 let map = document.getElementById('map')
 if(userSignedIn){
   map.classList.remove("unlogged-map");
