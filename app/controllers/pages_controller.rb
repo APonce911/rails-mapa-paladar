@@ -4,6 +4,7 @@ class PagesController < ApplicationController
 
   def home
     @posts = Post.all.to_json.html_safe
+    @images = Image.all.to_json.html_safe
   end
 
   def privacypolicy

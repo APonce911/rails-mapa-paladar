@@ -158,11 +158,30 @@ if (map) {
   // var marker = new google.maps.Marker({ position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   // var marker = new google.maps.Marker({position: myLatlng,icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
+
+
   //=========PINS FOR POSTS=====================================================
+
+  console.log(JSImages);
   JSPosts.forEach((post) => {
     const lat = post["lat"];
     const lng = post["lng"];
-    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
+    // const image = JSimagesfiltrado
+    // const image = 'https://scontent-gru2-2.cdninstagram.com/vp/ddde0002b0fdaaa99d75399f949c69d4/5C70B6FF/t51.2885-15/e35/45451054_320484342080657_6657877484747009064_n.jpg'
+  // ===========DEFINING IMAGE MARKER ============================================
+
+    let imageMarker = {
+      url: 'https://scontent-gru2-2.cdninstagram.com/vp/ddde0002b0fdaaa99d75399f949c69d4/5C70B6FF/t51.2885-15/e35/45451054_320484342080657_6657877484747009064_n.jpg',
+      scaledSize: new google.maps.Size(60, 60)
+      // width: 20,
+      // height: 20,
+    }
+
+    // image icon
+    // filtrar do JSimages o atributo url relativo ao post_id
+    // configuro tamanho
+
+    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map, icon:imageMarker});
   });
 
   //==========MY LOCATION CODE=================================================
