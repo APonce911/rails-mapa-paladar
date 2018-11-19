@@ -150,7 +150,22 @@ if (map) {
 
 
   //=========POP-UP SECTION=====================================================
-  
+  // Body Content
+  let contentString = 
+  '<div id="content">'+
+    '<h3 class="title" align="center">Restaurant Name</h3>'+
+    '<img id="popup-image"class="media-object pull-left" src="http://placehold.it/64x64" >'+
+    '<div class="media-body" id="bodyContent">'+
+      '<h4>O que seus amigos dizem sobre isso:</h4>'+
+        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+    '</div>'+
+  '</div>';
+  // Pop Up Window
+  var popup = new google.maps.InfoWindow({
+    content: contentString
+  });
 
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
@@ -180,7 +195,13 @@ if (map) {
 
     }
 
-    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map, icon:imageMarker});
+    const PostMarker = new google.maps.Marker({
+      position:{lat,lng}, 
+      map: map,
+      icon:imageMarker});
+      PostMarker.addListener('click', function() {
+      infowindow.open(map, marker);
+    });
     i += 1
   });
 
