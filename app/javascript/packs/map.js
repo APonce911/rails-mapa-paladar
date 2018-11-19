@@ -158,15 +158,31 @@ if (map) {
   // var marker = new google.maps.Marker({ position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
   // NEW MARKER FUNCTION
   // var marker = new google.maps.Marker({position: myLatlng,icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
+
+
   //=========PINS FOR POSTS=====================================================
+
+  let i = 0
   JSPosts.forEach((post) => {
     const lat = post["lat"];
     const lng = post["lng"];
-    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map});
+    const imageUrl = JSImages[i]["url"]
+
+  // ===========DEFINING IMAGE MARKER ============================================
+
+    let imageMarker = {
+      url: imageUrl,
+      scaledSize: new google.maps.Size(60, 60)
+
+    }
+
+    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map, icon:imageMarker});
+    i += 1
   });
+  // console.log("o i é")
+  // console.log(i)
 
   //==========MY LOCATION CODE=================================================
-  //=====we need to verify the precision of this geocode=======================
 
   const geoOptions = {
     enableHighAccuracy: true,
