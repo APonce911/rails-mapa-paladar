@@ -200,7 +200,7 @@ if (map) {
       map: map,
       icon:imageMarker});
       PostMarker.addListener('click', function() {
-      infowindow.open(map, marker);
+      popup.open(map, PostMarker);
     });
     i += 1
   });
