@@ -148,6 +148,10 @@ if (map) {
         zoomControl:true
   })
 
+
+  //=========POP-UP SECTION=====================================================
+  
+
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
@@ -179,8 +183,6 @@ if (map) {
     const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map, icon:imageMarker});
     i += 1
   });
-  // console.log("o i é")
-  // console.log(i)
 
   //==========MY LOCATION CODE=================================================
 
