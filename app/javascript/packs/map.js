@@ -149,23 +149,7 @@ if (map) {
   })
 
 
-  //=========POP-UP SECTION=====================================================
-  // Body Content
-  let contentString = 
-  '<div id="content">'+
-    '<h3 class="title" align="center">Restaurant Name</h3>'+
-    '<img id="popup-image"class="media-object pull-left" src="http://placehold.it/64x64" >'+
-    '<div class="media-body" id="bodyContent">'+
-      '<h4>O que seus amigos dizem sobre isso:</h4>'+
-        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
-        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
-        '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
-    '</div>'+
-  '</div>';
-  // Pop Up Window
-  var popup = new google.maps.InfoWindow({
-    content: contentString
-  });
+
 
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
@@ -186,8 +170,8 @@ if (map) {
     const lat = post["lat"];
     const lng = post["lng"];
     const imageUrl = JSImages[i]["url"]
-
-  // ===========DEFINING IMAGE MARKER ============================================
+    const restarantName = post["restaurant_name"]
+    // ===========DEFINING IMAGE MARKER ============================================
 
     let imageMarker = {
       url: imageUrl,
@@ -196,12 +180,34 @@ if (map) {
     }
 
     const PostMarker = new google.maps.Marker({
-      position:{lat,lng}, 
+      position:{lat,lng},
       map: map,
       icon:imageMarker});
+
+    //=========POP-UP SECTION=====================================================
+    // Body Content
+    let contentString =
+    '<div id="content">'+
+      `<h3 class="title" align="center">${restarantName}</h3>`+
+      `<img id="popup-image"class="media-object pull-left" src=${imageUrl} >`+
+      '<div class="media-body" id="bodyContent">'+
+        '<h4>O que seus amigos dizem sobre isso:</h4>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+      '</div>'+
+      '<div class="btn btn-success btn-block">Teste</div>'+
+    '</div>';
+
+    // Pop Up Window
+    var popup = new google.maps.InfoWindow({
+      content: contentString,
+    });
+
       PostMarker.addListener('click', function() {
       popup.open(map, PostMarker);
     });
+    console.log(post["restaurant_name"])
     i += 1
   });
 
@@ -218,7 +224,6 @@ if (map) {
     map: map,
     animation: google.maps.Animation.BOUNCE
   });
-                                                    // watchPosition(botao center not working) or getCurrentPosition or clearWatch
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
       var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       myMarker.setPosition(myLocation);
@@ -228,6 +233,7 @@ if (map) {
   }, geoOptions);
 
   // =====CENTER ON ME BUTTOM===================================================
+
   function addYourLocationButton(map, marker) {
     var controlDiv = document.createElement('div');
 
