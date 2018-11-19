@@ -306,10 +306,6 @@ if (map) {
 };
 
 
-// Function to disable share button
-  const shareButton = document.getElementById("share-btn")
-  shareButton.addEventListener('click', function() {
-    shareButton.style.display = 'none';
-  });
+
 
 
