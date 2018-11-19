@@ -77,9 +77,15 @@
   border-top: 1px solid #E6E6E6;
 }
 
-.btn-success {
+.share-content {
   color: grey;
-  border-color: lightgrey;
-  background-color: #ffffffa6;
+  border: none;
+  background-color: #fcbdbd00;
   font-size: small;
+  text-decoration: underline;
 }
+
+.share-content:hover {
+  color: #fcbdbd00;
+}
+
