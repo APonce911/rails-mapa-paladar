@@ -24,6 +24,7 @@ private
         @post.save
         create_images(index)
         create_comments(@post[:ig_id])
+        puts "============================import complete======================"
 
       end
     end
