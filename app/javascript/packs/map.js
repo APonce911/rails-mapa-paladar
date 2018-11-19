@@ -24,7 +24,7 @@ if (map) {
 
   // CUSTOM MARKER
   var icon = {
-    path: "M0,2 L0,51.3964714 C-3.8565838e-15,51.9487562 0.44771525,52.3964714 1,52.3964714 L2.0863,52.3964714 C2.36766,52.3964714 2.59574,52.6237893 2.59574,52.9041748 L2.59574,62 L18.5881,52.6744493 C18.9003,52.4923743 19.2555,52.3964714 19.6172,52.3964714 L52,52.3964714 C53.1045695,52.3964714 54,51.5010409 54,50.3964714 L54,5 C54,2.23857625 51.7614237,4.39800865e-15 49,0 L2,0 C0.8954305,2.02906125e-16 -1.3527075e-16,0.8954305 0,2 Z",
+    path: "M0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 L49,0 C51.7614237,4.39800865e-15 54,2.23857625 54,5 L54,50.3964714 C54,51.5010409 53.1045695,52.3964714 52,52.3964714 L19.6172,52.3964714 C19.2555,52.3964714 18.9003,52.4923743 18.5881,52.6744493 L2.59574,62 L2.59574,52.9041748 C2.59574,52.6237893 2.36766,52.3964714 2.0863,52.3964714 L1,52.3964714 C0.44771525,52.3964714 -3.8565838e-15,51.9487562 0,51.3964714 L0,2 Z M5,4 C4.44771525,4 4,4.44771525 4,5 L4,48 C4,48.5522847 4.44771525,49 5,49 L48,49 C48.5522847,49 49,48.5522847 49,48 L49,5 C49,4.44771525 48.5522847,4 48,4 L5,4 Z",
         fillColor: '#DD5A58',
         fillOpacity: 0.9,
         anchor: new google.maps.Point(0,10),
@@ -148,6 +148,9 @@ if (map) {
         zoomControl:true
   })
 
+
+
+
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
@@ -167,8 +170,19 @@ if (map) {
     const lat = post["lat"];
     const lng = post["lng"];
     const imageUrl = JSImages[i]["url"]
+    const restarantName =  post["restaurant_name"]
+    const text = post["text"]
+    const date = post["date"]
+    const userId = post["user_id"]
+    const email = JSUsers.filter(user => user.id === userId)[0]['email']
+    const emailRegex = /^.*(?=@)/;
+    const nicknameArray = emailRegex.exec(email)
 
-  // ===========DEFINING IMAGE MARKER ============================================
+    const nickname = "@" + nicknameArray[0]
+    const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
+
+
+    // ===========DEFINING IMAGE MARKER ============================================
 
     let imageMarker = {
       url: imageUrl,
@@ -176,11 +190,37 @@ if (map) {
 
     }
 
-    const PostMarker = new google.maps.Marker({position:{lat,lng} , map: map, icon:imageMarker});
+    const PostMarker = new google.maps.Marker({
+      position:{lat,lng},
+      map: map,
+      icon:imageMarker});
+
+    //=========POP-UP SECTION=====================================================
+    // Body Content
+    let contentString =
+    '<div id="content">'+
+      `<img id="popup-image" class="media-object" src=${imageUrl} >`+
+      '<div class="media-body" id="bodyContent">'+
+        `<img src=${avatar} alt="" class="img-circle">`+
+        `<h3 class="title" align="center">${nickname}</h3>`+
+        `<h4 class="title" align="center">${restarantName}</h4>`+
+
+          `<p>${date}</p>`+
+          `<p>${text}</p>`+
+      '</div>'+
+    '</div>';
+
+    // Pop Up Window
+    var popup = new google.maps.InfoWindow({
+      content: contentString,
+    });
+
+      PostMarker.addListener('click', function() {
+      popup.open(map, PostMarker);
+    });
+    // console.log(post["restaurant_name"])
     i += 1
   });
-  // console.log("o i é")
-  // console.log(i)
 
   //==========MY LOCATION CODE=================================================
 
@@ -195,7 +235,6 @@ if (map) {
     map: map,
     animation: google.maps.Animation.BOUNCE
   });
-                                                    // watchPosition(botao center not working) or getCurrentPosition or clearWatch
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
       var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
       myMarker.setPosition(myLocation);
@@ -205,6 +244,7 @@ if (map) {
   }, geoOptions);
 
   // =====CENTER ON ME BUTTOM===================================================
+
   function addYourLocationButton(map, marker) {
     var controlDiv = document.createElement('div');
 
