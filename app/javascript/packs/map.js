@@ -170,7 +170,18 @@ if (map) {
     const lat = post["lat"];
     const lng = post["lng"];
     const imageUrl = JSImages[i]["url"]
-    const restarantName = post["restaurant_name"]
+    const restarantName =  post["restaurant_name"]
+    const text = post["text"]
+    const date = post["date"]
+    const userId = post["user_id"]
+    const email = JSUsers.filter(user => user.id === userId)[0]['email']
+    const emailRegex = /^.*(?=@)/;
+    const nicknameArray = emailRegex.exec(email)
+
+    const nickname = "@" + nicknameArray[0]
+    const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
+
+
     // ===========DEFINING IMAGE MARKER ============================================
 
     let imageMarker = {
@@ -188,15 +199,15 @@ if (map) {
     // Body Content
     let contentString =
     '<div id="content">'+
-      `<h3 class="title" align="center">${restarantName}</h3>`+
-      `<img id="popup-image"class="media-object pull-left" src=${imageUrl} >`+
+      `<img id="popup-image" class="media-object" src=${imageUrl} >`+
       '<div class="media-body" id="bodyContent">'+
-        '<h4>O que seus amigos dizem sobre isso:</h4>'+
-          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
-          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
-          '<p>Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur. Lorem ipsum dolor sit amet, consectetur.</p>'+
+        `<img src=${avatar} alt="" class="img-circle">`+
+        `<h3 class="title" align="center">${nickname}</h3>`+
+        `<h4 class="title" align="center">${restarantName}</h4>`+
+
+          `<p>${date}</p>`+
+          `<p>${text}</p>`+
       '</div>'+
-      '<div class="btn btn-success btn-block">Teste</div>'+
     '</div>';
 
     // Pop Up Window
@@ -207,7 +218,7 @@ if (map) {
       PostMarker.addListener('click', function() {
       popup.open(map, PostMarker);
     });
-    console.log(post["restaurant_name"])
+    // console.log(post["restaurant_name"])
     i += 1
   });
 
