@@ -1,15 +1,17 @@
-<% unless user_signed_in? %>
-  <div class="float-page">
-    <div class="login-box animated slideInDown">
-      <h2 class="logo">Mapa Paladar</h2>
-      <div class="login-links">
-        <%= render 'components/login' %>
+<div id="home">
+  <% unless user_signed_in? %>
+    <div class="float-page">
+      <div class="login-box animated slideInDown">
+        <h2 class="logo">Mapa Paladar</h2>
+        <div class="login-links">
+          <%= render 'components/login' %>
+        </div>
       </div>
     </div>
-  </div>
 
-<% end %>
-<div id="map"> </div>
+  <% end %>
+  <div id="map"> </div>
+</div>
 
 <script>
   let JSPosts = <%= @posts %>;
