@@ -203,12 +203,12 @@ if (map) {
       '<div>'+
         '<div class="post-info-div">'+
           '<ul class="post-info">'+
-            '<li class="post-info-item"><img src=${avatar} class="img-circle"></li>'+
-              '<li class="post-info-item">${restarantName}</li>'+
-              '<li class="post-info-username">${nickname} | ${date}</li>'+
+            `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
+              `<li class="post-info-item">${restarantName}</li>`+
+              `<li class="post-info-username">${nickname} | ${date}</li>`+
             '</ul>'+
         '</div>'+
-        '<p>${text}</p>'+
+        `<p>${text}</p>`+
       '</div>'+
     '</div>';
     // Pop Up Window
