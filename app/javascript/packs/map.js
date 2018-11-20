@@ -204,7 +204,7 @@ if (map) {
         '<div class="post-info-div">'+
           '<ul class="post-info">'+
             `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
-              `<li class="post-info-item">${restarantName}</li>`+
+              `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
               `<li class="post-info-username">${nickname} | ${date}</li>`+
             '</ul>'+
         '</div>'+
