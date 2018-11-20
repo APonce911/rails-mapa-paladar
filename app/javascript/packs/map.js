@@ -198,16 +198,22 @@ if (map) {
     //=========POP-UP SECTION=====================================================
     // Body Content
     let contentString =
-    '<div id="content">'+
-      `<img id="" class="popup-image" src=${imageUrl} >`+
-      '<div class="media-body" id="bodyContent">'+
-        // `<img src=${avatar} alt="" class="img-circle">`+
-        `<h4 class="title" align="center">${restarantName}</h4>`+
-        `<h3 class="title" align="center">${nickname}</h3>`+
+    '<div class="popup">'+
+      `<img class="popup-image" src=${imageUrl} >`+
+      '<div>'+
+        '<div class="post-info-div">'+
+          '<ul class="post-info">'+
+            '<li class="post-info-item">'+
+              '<img src=${avatar} class="img-circle">'+
+            '</li>'+
+            '<li class="post-info-item">${restarantName}</li>'+
+            '<li class="post-info-username">${nickname} | ${date}</li>'+
+
+        `<h3 class="title" align="center"></h3>`+
         
 
-          `<p>${date}</p>`+
-          `<p>${text}</p>`+
+          `<p></p>`+
+          `<p></p>`+
       '</div>'+
     '</div>';
 
