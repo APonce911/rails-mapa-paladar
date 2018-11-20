@@ -11,8 +11,10 @@ private
 
   def create_posts
     @posts["data"].each_with_index do |element, index|
-
       if element["location"] != nil
+        # ==============google places parse test
+        parse_place_type(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
+        # ==============end of test============
         @post = Post.create(user_id: current_user.id)
         @post[:ig_id] = element["id"]
         unix_time = element["created_time"].to_i
@@ -24,11 +26,10 @@ private
         @post.save
         create_images(index)
         create_comments(@post[:ig_id])
-        puts "============================import complete======================"
 
       end
     end
-
+    puts "============================import complete======================"
   end
 
   def create_images(index)
@@ -72,12 +73,28 @@ private
     @posts = JSON.parse(posts_serialized)
   end
 
-def define_env
-    if current_user.email == "airton_p@mapa.com"
-      @env = ENV['INSTAGRAM_ACCESS_TOKEN']
-    else
-      @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
-    end
-end
+  def parse_place_type(name,lat,lng)
+  # url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + name + "&inputtype=textquery&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
+  # url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
+  # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
+    url = url.gsub(" ", "%20")
+  # estou tendo erro no ã quando vou parsear a string acima
+    puts "==================================================================="
+    puts(url)
+    infos_serialized = open(url).read
+    puts infos_serialized
+    raise
+    @infos = JSON.parse(infos_serialized)
+    puts @infos
+  end
+
+  def define_env
+      if current_user.email == "airton_p@mapa.com"
+        @env = ENV['INSTAGRAM_ACCESS_TOKEN']
+      else
+        @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
+      end
+  end
 
 end
