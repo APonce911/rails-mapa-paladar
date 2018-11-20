@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class PostsController < ApplicationController
-  # before_action :parse_posts
+  before_action :parse_posts
 
   def create
     create_posts
@@ -81,12 +81,12 @@ private
     infos_serialized = scrape(url)
     infos = JSON.parse(infos_serialized)
 
-    puts "========================"
-    puts infos
-    puts infos["results"][0]["types"].class
+    # puts "========================"
+    # puts infos
+    # puts infos["results"][0]["types"].class
 
     types = infos["results"][0]["types"]
-    puts types
+    # puts types
     accepted_types = ['bar', 'bakery', 'cafe', 'restaurant', 'meal_takeaway', 'supermarket']
     result = (types & accepted_types).any?
     return result
