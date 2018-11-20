@@ -77,9 +77,16 @@
   border-top: 1px solid #E6E6E6;
 }
 
-.btn-success {
-  color: grey;
-  border-color: lightgrey;
-  background-color: #ffffffa6;
+.share-content {
+  color: white;
+  border: none;
+  background-color: #fcbdbd00;
   font-size: small;
+  font-weight: bold;
+  text-decoration: underline;
 }
+
+// .share-content:hover {
+//   color: #fcbdbd00;
+// }
+
