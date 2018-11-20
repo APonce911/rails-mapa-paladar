@@ -199,11 +199,12 @@ if (map) {
     // Body Content
     let contentString =
     '<div id="content">'+
-      `<img id="popup-image" class="media-object" src=${imageUrl} >`+
+      `<img id="" class="popup-image" src=${imageUrl} >`+
       '<div class="media-body" id="bodyContent">'+
-        `<img src=${avatar} alt="" class="img-circle">`+
-        `<h3 class="title" align="center">${nickname}</h3>`+
+        // `<img src=${avatar} alt="" class="img-circle">`+
         `<h4 class="title" align="center">${restarantName}</h4>`+
+        `<h3 class="title" align="center">${nickname}</h3>`+
+        
 
           `<p>${date}</p>`+
           `<p>${text}</p>`+
@@ -213,6 +214,7 @@ if (map) {
     // Pop Up Window
     var popup = new google.maps.InfoWindow({
       content: contentString,
+      maxWidth: 320
     });
 
       PostMarker.addListener('click', function() {
