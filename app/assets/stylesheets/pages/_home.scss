@@ -55,9 +55,16 @@
   background-color: #fcbdbd9c;
 }
 
-.popup-image {
+.popup {
+  width: 80%;
   display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
+/*   padding-right: auto; */
+  padding-left: 35px;
 }
+
+.popup-image {
+  margin-top: 15px;
+  width: auto;
+  height: 45vh;
+}
+
