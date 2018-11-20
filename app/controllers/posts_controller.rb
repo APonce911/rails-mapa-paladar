@@ -74,9 +74,7 @@ private
   end
 
   def is_restaurant?(name,lat,lng)
-  # url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + name + "&inputtype=textquery&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
-  # url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
-  # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
+    # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
     # url = url.gsub(" ", "%20")
     # infos_serialized = open(url).read
@@ -86,12 +84,12 @@ private
     puts "========================"
     puts infos
     puts infos["results"][0]["types"].class
-    puts infos["results"][0]["types"]
-    accepted_types = ['bar','bakery','cafe','restaurant']
 
-    return types.include?(accepted_types)
-
-    raise
+    types = infos["results"][0]["types"]
+    puts types
+    accepted_types = ['bar', 'bakery', 'cafe', 'restaurant']
+    result = (types & accepted_types).any?
+    return result
   end
 
   def scrape(url)
@@ -100,7 +98,6 @@ private
     rescue URI::InvalidURIError
       uri = URI.parse(URI.escape(url))
     end
-
     result = open(uri).read
 
     return result
@@ -113,5 +110,4 @@ private
         @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
       end
   end
-
 end
