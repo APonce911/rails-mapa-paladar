@@ -87,7 +87,7 @@ private
 
     types = infos["results"][0]["types"]
     puts types
-    accepted_types = ['bar', 'bakery', 'cafe', 'restaurant']
+    accepted_types = ['bar', 'bakery', 'cafe', 'restaurant', 'meal_takeaway', 'supermarket']
     result = (types & accepted_types).any?
     return result
   end
