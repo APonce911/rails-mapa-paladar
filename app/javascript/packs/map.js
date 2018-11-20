@@ -203,20 +203,14 @@ if (map) {
       '<div>'+
         '<div class="post-info-div">'+
           '<ul class="post-info">'+
-            '<li class="post-info-item">'+
-              '<img src=${avatar} class="img-circle">'+
-            '</li>'+
-            '<li class="post-info-item">${restarantName}</li>'+
-            '<li class="post-info-username">${nickname} | ${date}</li>'+
-
-        `<h3 class="title" align="center"></h3>`+
-        
-
-          `<p></p>`+
-          `<p></p>`+
+            '<li class="post-info-item"><img src=${avatar} class="img-circle"></li>'+
+              '<li class="post-info-item">${restarantName}</li>'+
+              '<li class="post-info-username">${nickname} | ${date}</li>'+
+            '</ul>'+
+        '</div>'+
+        '<p>${text}</p>'+
       '</div>'+
     '</div>';
-
     // Pop Up Window
     var popup = new google.maps.InfoWindow({
       content: contentString,
