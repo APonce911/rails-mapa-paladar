@@ -198,21 +198,23 @@ if (map) {
     //=========POP-UP SECTION=====================================================
     // Body Content
     let contentString =
-    '<div id="content">'+
-      `<img id="popup-image" class="media-object" src=${imageUrl} >`+
-      '<div class="media-body" id="bodyContent">'+
-        `<img src=${avatar} alt="" class="img-circle">`+
-        `<h3 class="title" align="center">${nickname}</h3>`+
-        `<h4 class="title" align="center">${restarantName}</h4>`+
-
-          `<p>${date}</p>`+
-          `<p>${text}</p>`+
+    '<div class="popup">'+
+      `<img class="popup-image" src=${imageUrl} >`+
+      '<div>'+
+        '<div class="post-info-div">'+
+          '<ul class="post-info">'+
+            `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
+              `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
+              `<li class="post-info-username">${nickname} | ${date}</li>`+
+            '</ul>'+
+        '</div>'+
+        `<p>${text}</p>`+
       '</div>'+
     '</div>';
-
     // Pop Up Window
     var popup = new google.maps.InfoWindow({
       content: contentString,
+      maxWidth: 320
     });
 
       PostMarker.addListener('click', function() {
