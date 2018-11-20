@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class PostsController < ApplicationController
-  before_action :parse_posts
+  # before_action :parse_posts
 
   def create
     create_posts
@@ -13,7 +13,7 @@ private
     @posts["data"].each_with_index do |element, index|
       if element["location"] != nil
         # ==============google places parse test
-        parse_place_type(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
+        puts is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
         # ==============end of test============
         @post = Post.create(user_id: current_user.id)
         @post[:ig_id] = element["id"]
@@ -73,20 +73,37 @@ private
     @posts = JSON.parse(posts_serialized)
   end
 
-  def parse_place_type(name,lat,lng)
+  def is_restaurant?(name,lat,lng)
   # url = "https://maps.googleapis.com/maps/api/place/findplacefromtext/json?" + name + "&inputtype=textquery&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
   # url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&fields=name,type&key=" + ENV['GOOGLEMAPS_API_KEY']
   # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
     url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
-    url = url.gsub(" ", "%20")
-  # estou tendo erro no ã quando vou parsear a string acima
-    puts "==================================================================="
-    puts(url)
-    infos_serialized = open(url).read
-    puts infos_serialized
+    # url = url.gsub(" ", "%20")
+    # infos_serialized = open(url).read
+    infos_serialized = scrape(url)
+    infos = JSON.parse(infos_serialized)
+
+    puts "========================"
+    puts infos
+    puts infos["results"][0]["types"].class
+    puts infos["results"][0]["types"]
+    accepted_types = ['bar','bakery','cafe','restaurant']
+
+    return types.include?(accepted_types)
+
     raise
-    @infos = JSON.parse(infos_serialized)
-    puts @infos
+  end
+
+  def scrape(url)
+    begin
+      uri = URI.parse(url)
+    rescue URI::InvalidURIError
+      uri = URI.parse(URI.escape(url))
+    end
+
+    result = open(uri).read
+
+    return result
   end
 
   def define_env
