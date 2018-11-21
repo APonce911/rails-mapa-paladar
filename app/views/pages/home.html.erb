@@ -2,18 +2,21 @@
   <% unless user_signed_in? %>
     <div class="float-page">
       <div class="login-box animated slideInDown">
-        <h2 class="logo">Mapa Paladar®</h2>
-        <label>As melhores recomendações em um click</label>
+        <div class='logoandslogan'>
+          <h3 class="logo">Mapa Paladar®</h3>
+          <p id='slogan'>As melhores dicas em um único mapa </p>
+          <!-- <p id='slogan'>um único mapa</p> -->
+        </div>
         <div class="login-links">
           <%= render 'components/login' %>
         </div>
-      <a><i class="material-icons">Made with <i class="fas fa-heart"></i> by Food Bloggers</i></a>
+      <!-- <p><i class="">Made with <i class="fas fa-heart"></i> by Food Lovers</i></p> -->
       </div>
     </div>
 
   <% end %>
   <div id="map"></div>
-  
+
 </div>
 
 <script>
