@@ -166,8 +166,8 @@ if (map) {
   let markers = []
   let k = 0
   function displayPostMarker(post){
-    console.log(post)
-    console.log("entramos no displayPostMarker")
+    // console.log(post)
+    // console.log("entramos no displayPostMarker")
     const lat = post["lat"];
     const lng = post["lng"];
     const imageUrl = JSImages[k]["url"]
@@ -352,14 +352,14 @@ if (map) {
   }
 
   // define JS variable with HTML DOM Element
-  if(userSignedIn){
-    let clearButtom = document.getElementById('clearButtom')
-    clearButtom.addEventListener("click", clearMarkers);
-  };
+  // if(userSignedIn){
+  //   let clearButtom = document.getElementById('clearButtom')
+  //   clearButtom.addEventListener("click", clearMarkers);
+  // };
   //==========ADD MARKERS BUTTOM==============================================
 
   if(userSignedIn){
-    let addButtom = document.getElementById('addButtom')
+    let addButtom = document.getElementById('share-btn')
     addButtom.addEventListener("click", displayAllMarkers);
   };
 

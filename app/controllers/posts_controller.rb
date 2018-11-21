@@ -4,7 +4,9 @@ class PostsController < ApplicationController
   # before_action :parse_posts
 
   def create
-    # create_posts
+    # raise
+    parse_posts
+    create_posts
   end
 
 private
