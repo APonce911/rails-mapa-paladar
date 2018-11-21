@@ -1,14 +1,15 @@
 /* Main navbar */
 .navbar-wagon {
-  background: rgba(0,0,0,0);
+  background: #dddddd45;
   transition: all 0.3s ease;
   height: 70px;
-  padding: 0px 30px;
+  padding: 0px 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   width:100%
 }
+
 
 /* Logo */
 .navbar-wagon-brand img {
@@ -32,7 +33,8 @@
 /* Basic navbar item */
 .navbar-wagon-item {
   cursor: pointer;
-  padding: 0 20px;
+  // padding: 0 10px;
+  padding-right: 0;
 }
 
 /* Navbar link */
