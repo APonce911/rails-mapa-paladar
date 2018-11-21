@@ -1,5 +1,8 @@
 
 class PagesController < ApplicationController
+  # PLEASE DELETE LINE 3 & 4 FOR  PRODUCTION
+	# skip_before_action :authenticate_user!, only: [:home]  
+
   skip_before_action :authenticate_user!, only: [:home, :privacypolicy]
 
   def home

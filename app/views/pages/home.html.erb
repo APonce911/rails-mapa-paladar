@@ -6,12 +6,13 @@
         <div class="login-links">
           <%= render 'components/login' %>
         </div>
+      <a class="btn-floating"><i class="material-icons">add</i></a>
       </div>
     </div>
 
   <% end %>
-  <div id="map"> </div>
-  <a class="btn-floating"><i class="material-icons">add</i></a>
+  <div id="map"></div>
+  
 </div>
 
 <script>
@@ -20,6 +21,8 @@
   let JSUsers = <%= @users %>;
   let userSignedIn = <%= user_signed_in? %>
 </script>
+
+<script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
 <%= javascript_pack_tag "map" %>
