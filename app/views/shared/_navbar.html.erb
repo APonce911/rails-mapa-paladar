@@ -4,7 +4,8 @@
  <h4 class="logo">Mapa Paladar</h4>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-    <a href="#" class="btn-clear">Clear Map</a>
+    <div class="btn-clear" id="addButtom">Add Posts</div>
+    <div class="btn-clear" id="clearButtom">Clear Map</div>
     <%= form_tag posts_path do %>
       <%= submit_tag 'Share my content', class: 'share-content', id: 'share-btn'%>
     <% end %>

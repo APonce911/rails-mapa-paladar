@@ -162,67 +162,76 @@ if (map) {
   // NEW MARKER FUNCTION
   // var marker = new google.maps.Marker({position: myLatlng,icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
 
+  let markers = []
+  function postMarkers() {
 
-  //=========PINS FOR POSTS=====================================================
+    //=========PINS FOR POSTS=====================================================
+    let i = 0
+    JSPosts.forEach((post) => {
+      const lat = post["lat"];
+      const lng = post["lng"];
+      const imageUrl = JSImages[i]["url"]
+      const restarantName =  post["restaurant_name"]
+      const text = post["text"]
+      const date = post["date"]
+      const userId = post["user_id"]
+      const email = JSUsers.filter(user => user.id === userId)[0]['email']
+      const emailRegex = /^.*(?=@)/;
+      const nicknameArray = emailRegex.exec(email)
 
-  let i = 0
-  JSPosts.forEach((post) => {
-    const lat = post["lat"];
-    const lng = post["lng"];
-    const imageUrl = JSImages[i]["url"]
-    const restarantName =  post["restaurant_name"]
-    const text = post["text"]
-    const date = post["date"]
-    const userId = post["user_id"]
-    const email = JSUsers.filter(user => user.id === userId)[0]['email']
-    const emailRegex = /^.*(?=@)/;
-    const nicknameArray = emailRegex.exec(email)
-
-    const nickname = "@" + nicknameArray[0]
-    const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
+      const nickname = "@" + nicknameArray[0]
+      const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
 
 
-    // ===========DEFINING IMAGE MARKER ============================================
+      // ===========DEFINING IMAGE MARKER ============================================
 
-    let imageMarker = {
-      url: imageUrl,
-      scaledSize: new google.maps.Size(60, 60)
+      let imageMarker = {
+        url: imageUrl,
+        scaledSize: new google.maps.Size(60, 60)
 
-    }
+      }
 
-    const PostMarker = new google.maps.Marker({
-      position:{lat,lng},
-      map: map,
-      icon:imageMarker});
+      const PostMarker = new google.maps.Marker({
+        position:{lat,lng},
+        map: map,
+        animation: google.maps.Animation.DROP,
+        icon:imageMarker
+      })
+      // =======add PostMarker to markers array
+      markers.push(PostMarker);
 
-    //=========POP-UP SECTION=====================================================
-    // Body Content
-    let contentString =
-    '<div class="popup">'+
-      `<img class="popup-image" src=${imageUrl} >`+
-      '<div>'+
-        '<div class="post-info-div">'+
-          '<ul class="post-info">'+
-            `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
-              `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
-              `<li class="post-info-username">${nickname} | ${date}</li>`+
-            '</ul>'+
+      //=========POP-UP SECTION=====================================================
+      // Body Content
+      let contentString =
+      '<div class="popup">'+
+        `<img class="popup-image" src=${imageUrl} >`+
+        '<div>'+
+          '<div class="post-info-div">'+
+            '<ul class="post-info">'+
+              `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
+                `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
+                `<li class="post-info-username">${nickname} | ${date}</li>`+
+              '</ul>'+
+          '</div>'+
+          `<p>${text}</p>`+
         '</div>'+
-        `<p>${text}</p>`+
-      '</div>'+
-    '</div>';
-    // Pop Up Window
-    var popup = new google.maps.InfoWindow({
-      content: contentString,
-      maxWidth: 320
-    });
+      '</div>';
+      // Pop Up Window
+      var popup = new google.maps.InfoWindow({
+        content: contentString,
+        maxWidth: 320
+      });
 
-      PostMarker.addListener('click', function() {
-      popup.open(map, PostMarker);
+        PostMarker.addListener('click', function() {
+        popup.open(map, PostMarker);
+      });
+      function waitFunction() {
+        console.log(i)
+      }
+      setTimeout(waitFunction, 3000)
+      i += 1
     });
-    // console.log(post["restaurant_name"])
-    i += 1
-  });
+  }
 
   //==========MY LOCATION CODE=================================================
 
@@ -305,11 +314,31 @@ if (map) {
     map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(controlDiv);
   }
   addYourLocationButton(map, myMarker)
+
+  // =====CLEAR MARKERS BUTTOM==================================================
+  // Sets the map on all markers in the array.
+  function setMapOnAll(map) {
+    for (var i = 0; i < markers.length; i++) {
+      markers[i].setMap(map);
+    }
+  }
+
+  function clearMarkers() {
+    setMapOnAll(null);
+  }
+  // define JS variable with HTML DOM Element
+  let clearButtom = document.getElementById('clearButtom')
+
+  clearButtom.addEventListener("click", clearMarkers);
+  //==========ADD MARKERS BUTTOM==============================================
+  let addButtom = document.getElementById('addButtom')
+
+  addButtom.addEventListener("click", postMarkers);
+
 };
 
-function clearMarkers() {
-  setMapOnAll(null);
-}
+
+
 
 
 
