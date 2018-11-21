@@ -5,9 +5,9 @@
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
 
-    <div id="addButtom">Add Posts</div>
-    <div id="clearButtom">Clear Map</div>
-
+    <div class="btn btn-success" id="addButtom">Add Posts</div>
+    <div class="btn btn-warning" id="clearButtom">Clear Map</div>
+    <!-- true 'Share my content' buttom -->
     <% unless @user_shared  %>
       <%= form_tag posts_path do %>
         <%= submit_tag 'Share my content', class: 'share-content', id: 'share-btn'%>

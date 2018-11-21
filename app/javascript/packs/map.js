@@ -162,76 +162,100 @@ if (map) {
   // NEW MARKER FUNCTION
   // var marker = new google.maps.Marker({position: myLatlng,icon: icon, map: map, animation: google.maps.Animation.BOUNCE});
 
+  // =====MARKER FOR SINGLE POST================================================
   let markers = []
-  function postMarkers() {
+  let k = 0
+  function displayPostMarker(post){
+    console.log(post)
+    console.log("entramos no displayPostMarker")
+    const lat = post["lat"];
+    const lng = post["lng"];
+    const imageUrl = JSImages[k]["url"]
+    const restarantName = post["restaurant_name"]
+    const text = post["text"]
+    const date = post["date"]
+    const userId = post["user_id"]
+    const email = JSUsers.filter(user => user.id === userId)[0]['email']
+    const emailRegex = /^.*(?=@)/;
+    const nicknameArray = emailRegex.exec(email)
 
-    //=========PINS FOR POSTS=====================================================
-    let i = 0
-    JSPosts.forEach((post) => {
-      const lat = post["lat"];
-      const lng = post["lng"];
-      const imageUrl = JSImages[i]["url"]
-      const restarantName =  post["restaurant_name"]
-      const text = post["text"]
-      const date = post["date"]
-      const userId = post["user_id"]
-      const email = JSUsers.filter(user => user.id === userId)[0]['email']
-      const emailRegex = /^.*(?=@)/;
-      const nicknameArray = emailRegex.exec(email)
-
-      const nickname = "@" + nicknameArray[0]
-      const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
+    const nickname = "@" + nicknameArray[0]
+    const avatar = JSUsers.filter(user => user.id === userId)[0]['avatar']
 
 
-      // ===========DEFINING IMAGE MARKER ============================================
+    // ===========DEFINING IMAGE MARKER =============================
 
-      let imageMarker = {
-        url: imageUrl,
-        scaledSize: new google.maps.Size(60, 60)
+    let imageMarker = {
+      url: imageUrl,
+      scaledSize: new google.maps.Size(60, 60)
 
-      }
+    }
 
-      const PostMarker = new google.maps.Marker({
-        position:{lat,lng},
-        map: map,
-        animation: google.maps.Animation.DROP,
-        icon:imageMarker
-      })
-      // =======add PostMarker to markers array
-      markers.push(PostMarker);
+    const PostMarker = new google.maps.Marker({
+      position:{lat,lng},
+      map: map,
+      animation: google.maps.Animation.DROP,
+      icon:imageMarker
+    })
+    // =======add PostMarker to markers array
+    markers.push(PostMarker);
 
-      //=========POP-UP SECTION=====================================================
-      // Body Content
-      let contentString =
-      '<div class="popup">'+
-        `<img class="popup-image" src=${imageUrl} >`+
-        '<div>'+
-          '<div class="post-info-div">'+
-            '<ul class="post-info">'+
-              `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
-                `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
-                `<li class="post-info-username">${nickname} | ${date}</li>`+
-              '</ul>'+
-          '</div>'+
-          `<p>${text}</p>`+
+    //=========POP-UP SECTION============================
+    // Body Content
+    let contentString =
+    '<div class="popup">'+
+      `<img class="popup-image" src=${imageUrl} >`+
+      '<div>'+
+        '<div class="post-info-div">'+
+          '<ul class="post-info">'+
+            `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
+              `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
+              `<li class="post-info-username">${nickname} | ${date}</li>`+
+            '</ul>'+
         '</div>'+
-      '</div>';
-      // Pop Up Window
-      var popup = new google.maps.InfoWindow({
-        content: contentString,
-        maxWidth: 320
-      });
+        `<p>${text}</p>`+
+      '</div>'+
+    '</div>';
+    // Pop Up Window
+    var popup = new google.maps.InfoWindow({
+      content: contentString,
+      maxWidth: 320
+    });
 
-        PostMarker.addListener('click', function() {
-        popup.open(map, PostMarker);
-      });
-      function waitFunction() {
-        console.log(i)
-      }
-      setTimeout(waitFunction, 3000)
-      i += 1
+      PostMarker.addListener('click', function() {
+      popup.open(map, PostMarker);
+    });
+
+    k += 1
+  }
+  //=========PINS FOR POSTS=====================================================
+  function displayAllMarkers() {
+    let i = 0
+    let array = []
+    JSPosts.forEach((post) => {
+      // let j = i * 500;
+      window.setTimeout(function(){
+        displayPostMarker(post)},100 + (i * 500));
+      i += 1;
     });
   }
+
+  // var arr = [1,2,3,4,5,6,7,8,9,10];
+
+  // function testing(i){
+  //   console.log("test");
+  //   setTimeout(
+  //     function(){
+  //       console.log(i);
+  //     },
+  //     3000
+  //   );
+  // }
+
+  // arr.forEach((i) => {
+  //   testing(i);
+  //   i++;
+  // });
 
   //==========MY LOCATION CODE=================================================
 
@@ -326,17 +350,21 @@ if (map) {
   function clearMarkers() {
     setMapOnAll(null);
   }
+
   // define JS variable with HTML DOM Element
-  let clearButtom = document.getElementById('clearButtom')
-
-  clearButtom.addEventListener("click", clearMarkers);
+  if(userSignedIn){
+    let clearButtom = document.getElementById('clearButtom')
+    clearButtom.addEventListener("click", clearMarkers);
+  };
   //==========ADD MARKERS BUTTOM==============================================
-  let addButtom = document.getElementById('addButtom')
 
-  addButtom.addEventListener("click", postMarkers);
+  if(userSignedIn){
+    let addButtom = document.getElementById('addButtom')
+    addButtom.addEventListener("click", displayAllMarkers);
+  };
+
 
 };
-
 
 
 
