@@ -1,7 +1,22 @@
 #home {
   margin: 0;
   height: 100%;
-  overflow: hidden
+  overflow: hidden;
+  z-index: 0 !important;
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  padding: 50px;
+  background-color: #1abb9c;
+  border-radius: 100%;
+  z-index: 4;
+  position: absolute;
+  margin-top: -160px;
+  margin-left: 20px;
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  opacity: 0.9;
 }
 
 .float-page{
