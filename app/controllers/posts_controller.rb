@@ -1,9 +1,11 @@
 require 'open-uri'
 
 class PostsController < ApplicationController
-  before_action :parse_posts
+  # before_action :parse_posts
 
   def create
+    # raise
+    parse_posts
     create_posts
   end
 
@@ -13,7 +15,7 @@ private
     @posts["data"].each_with_index do |element, index|
       if element["location"] != nil
         # ==============google places parse test
-        puts is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
+        # puts is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
         # ==============end of test============
         @post = Post.create(user_id: current_user.id)
         @post[:ig_id] = element["id"]
@@ -73,35 +75,35 @@ private
     @posts = JSON.parse(posts_serialized)
   end
 
-  def is_restaurant?(name,lat,lng)
-    # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
-    # url = url.gsub(" ", "%20")
-    # infos_serialized = open(url).read
-    infos_serialized = scrape(url)
-    infos = JSON.parse(infos_serialized)
+  # def is_restaurant?(name,lat,lng)
+  #   # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
+  #   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
+  #   # url = url.gsub(" ", "%20")
+  #   # infos_serialized = open(url).read
+  #   infos_serialized = scrape(url)
+  #   infos = JSON.parse(infos_serialized)
 
-    # puts "========================"
-    # puts infos
-    # puts infos["results"][0]["types"].class
+  #   # puts "========================"
+  #   # puts infos
+  #   # puts infos["results"][0]["types"].class
 
-    types = infos["results"][0]["types"]
-    # puts types
-    accepted_types = ['bar', 'bakery', 'cafe', 'restaurant', 'meal_takeaway', 'supermarket']
-    result = (types & accepted_types).any?
-    return result
-  end
+  #   types = infos["results"][0]["types"]
+  #   # puts types
+  #   accepted_types = ['bar', 'bakery', 'cafe', 'restaurant', 'meal_takeaway', 'supermarket']
+  #   result = (types & accepted_types).any?
+  #   return result
+  # end
 
-  def scrape(url)
-    begin
-      uri = URI.parse(url)
-    rescue URI::InvalidURIError
-      uri = URI.parse(URI.escape(url))
-    end
-    result = open(uri).read
+  # def scrape(url)
+  #   begin
+  #     uri = URI.parse(url)
+  #   rescue URI::InvalidURIError
+  #     uri = URI.parse(URI.escape(url))
+  #   end
+  #   result = open(uri).read
 
-    return result
-  end
+  #   return result
+  # end
 
   def define_env
       if current_user.email == "airton_p@mapa.com"
