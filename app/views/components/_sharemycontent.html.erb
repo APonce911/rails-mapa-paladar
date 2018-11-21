@@ -1,0 +1,6 @@
+    <!-- true 'Share my content' buttom -->
+    <% unless @user_shared  %>
+      <%= form_tag posts_path do %>
+        <%= submit_tag 'Share my content', class: 'share-content', id: 'share-btn'%>
+      <% end %>
+    <% end %>
