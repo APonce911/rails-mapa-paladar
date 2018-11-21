@@ -2,15 +2,21 @@
   <% unless user_signed_in? %>
     <div class="float-page">
       <div class="login-box animated slideInDown">
-        <h2 class="logo">Mapa Paladar</h2>
+        <div class='logoandslogan'>
+          <h3 class="logo">Mapa Paladar®</h3>
+          <p id='slogan'>As melhores dicas em um único mapa </p>
+          <!-- <p id='slogan'>um único mapa</p> -->
+        </div>
         <div class="login-links">
           <%= render 'components/login' %>
         </div>
+      <!-- <p><i class="">Made with <i class="fas fa-heart"></i> by Food Lovers</i></p> -->
       </div>
     </div>
 
   <% end %>
-  <div id="map"> </div>
+  <div id="map"></div>
+
 </div>
 
 <script>
@@ -19,6 +25,8 @@
   let JSUsers = <%= @users %>;
   let userSignedIn = <%= user_signed_in? %>
 </script>
+
+<script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
 
 <%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
 <%= javascript_pack_tag "map" %>

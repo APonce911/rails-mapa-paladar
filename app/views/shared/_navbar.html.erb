@@ -12,7 +12,7 @@
     <%#= render 'components/sharemycontent' %>
 
     <!-- false 'Share my content' buttom -->
-    <a class='share-content' id='share-btn'>Share my content</a>
+    <a class='share-content' id='share-btn'>Compartilhar Meus Posts</a>
 
     <% if user_signed_in? %>
 
@@ -27,17 +27,17 @@
           <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
             <li>
               <%= link_to root_path do %>
-                <i class="far fa-map"></i> <%= t(".map", default: " Map") %>
+                <i class="far fa-map"></i> <%= t(".map", default: "Mapa") %>
               <% end %>
             </li>
             <li>
               <%= link_to privacypolicy_path do %>
-                <i class="fa fa-info"></i>  <%= t(".privacypolicy", default: " Privacy Policy") %>
+                <i class="fa fa-info"></i>  <%= t(".privacypolicy", default: " Privacidade") %>
               <% end %>
             </li>
             <li>
               <%= link_to destroy_user_session_path, method: :delete do %>
-                <i class="fas fa-sign-out-alt"></i><%= t(".sign_out", default: " Log out") %>
+                <i class="fas fa-sign-out-alt"></i><%= t(".sign_out", default: " Sair") %>
               <% end %>
             </li>
           </ul>
