@@ -307,7 +307,9 @@ if (map) {
   addYourLocationButton(map, myMarker)
 };
 
-
+function clearMarkers() {
+  setMapOnAll(null);
+}
 
 
 
