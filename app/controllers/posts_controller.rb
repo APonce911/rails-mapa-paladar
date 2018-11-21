@@ -1,9 +1,11 @@
 require 'open-uri'
 
 class PostsController < ApplicationController
-  before_action :parse_posts
+  # before_action :parse_posts
 
   def create
+    # raise
+    parse_posts
     create_posts
   end
 

@@ -4,9 +4,15 @@
  <h4 class="logo">Mapa Paladar®</h4>
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-    <%= form_tag posts_path do %>
-      <%= submit_tag 'Share my content', class: 'share-content', id: 'share-btn'%>
-    <% end %>
+
+    <!-- <div class="btn btn-success" id="addButtom">Add Posts</div> -->
+    <!-- <div class="btn btn-warning" id="clearButtom">Clear Map</div> -->
+
+    <!-- true 'Share my content' buttom -->
+    <%#= render 'components/sharemycontent' %>
+
+    <!-- false 'Share my content' buttom -->
+    <a class='share-content' id='share-btn'>Share my content</a>
 
     <% if user_signed_in? %>
 
