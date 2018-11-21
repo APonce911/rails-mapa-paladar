@@ -168,9 +168,11 @@ if (map) {
   function displayPostMarker(post){
     // console.log(post)
     // console.log("entramos no displayPostMarker")
+    const postId = post["id"]
     const lat = post["lat"];
     const lng = post["lng"];
-    const imageUrl = JSImages[k]["url"]
+    // const imageUrl = JSImages[k]["url"]
+    const imageUrl = JSImages.filter(post => post.id === postId)[0]['url']
     const restarantName = post["restaurant_name"]
     const text = post["text"]
     const date = post["date"]
