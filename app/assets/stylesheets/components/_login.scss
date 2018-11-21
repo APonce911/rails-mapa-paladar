@@ -1,0 +1,46 @@
+.login-box {
+  // background-color: #fcbdbde8;
+  background: #FF5F6D;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  // background-color:#FEBCBD;
+  // border-radius: 5px;
+  border-radius: 17% 39% 18% 33% / 13% 33% 19% 23%;
+  box-shadow: 0 4px 8px #b6b6b608, 0 6px 20px #b6b6b6;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.logo  {
+  font-family: 'Pacifico' !important;
+  color: white;
+  // font-size: 40px;
+}
+
+.logoandslogan {
+  width:250;
+}
+
+.login-links {
+  font-size: 30px;
+}
+
+.privacy-link {
+  color: white;
+  opacity: 0.75;
+  font-size: 16px;
+  text-decoration: none;
+  margin-top: 10px;
+}
+
+#slogan {
+  color: white;
+  font-weight: lighter;
+  font-size: 17px;
+  font-family: 'Open Sans', sans-serif;
+}

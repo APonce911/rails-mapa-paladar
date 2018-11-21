@@ -188,7 +188,6 @@ if (map) {
     let imageMarker = {
       url: imageUrl,
       scaledSize: new google.maps.Size(60, 60)
-
     }
 
     const PostMarker = new google.maps.Marker({
@@ -197,6 +196,7 @@ if (map) {
       animation: google.maps.Animation.DROP,
       icon:imageMarker
     })
+
     // =======add PostMarker to markers array
     markers.push(PostMarker);
 
