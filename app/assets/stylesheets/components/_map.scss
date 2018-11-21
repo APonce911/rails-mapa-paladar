@@ -16,3 +16,44 @@
   margin-right: auto;
   width: 40%;
 }
+
+.popup {
+  width: 80%;
+  display: block;
+/*   padding-right: auto; */
+  padding-left: 35px;
+}
+
+.popup-image {
+  margin-top: 15px;
+  width: auto;
+  height: 45vh;
+}
+
+.post-avatar {
+  border-radius: 50%;
+  width: 30px;
+  margin-top: 5px;
+}
+
+.post-info-div {
+  margin-top: 15px;
+}
+
+.post-info {
+  position: relative;
+}
+
+.post-info-item:first-child {
+  position: absolute;
+  left:0;
+  display: inline;
+}
+
+.post-info-item:nth-child(2) {
+  list-style-type: none;
+}
+
+.post-info-username {
+  list-style-type: none;
+}
