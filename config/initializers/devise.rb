@@ -257,7 +257,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :instagram, ENV["INSTAGRAM_CLIENT_ID"], ENV["INSTAGRAM_CLIENT_SECRET"], scope: 'basic', redirect_uri: "#{ENV['SERVER_ROOT']}/users/auth/instagram/callback"
+  config.omniauth :instagram, ENV["INSTAGRAM_CLIENT_ID"], ENV["INSTAGRAM_CLIENT_SECRET"], scope: 'basic', redirect_uri: "#{ENV['MAPAPALADAR_URL']}/users/auth/instagram/callback"
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
