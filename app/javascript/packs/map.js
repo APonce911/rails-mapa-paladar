@@ -342,10 +342,10 @@ if (map) {
   // };
   //==========ADD MARKERS BUTTOM==============================================
 
-  if(userSignedIn&!userShared){
-    let addButtom = document.getElementById('share-btn')
-    addButtom.addEventListener("click", displayAllMarkers);
-  };
+  // if(userSignedIn&!userShared){
+  //   let addButtom = document.getElementById('share-btn')
+  //   addButtom.addEventListener("click", displayAllMarkers);
+  // };
 
   displayAllMarkers();
 };
