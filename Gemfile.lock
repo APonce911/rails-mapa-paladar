@@ -142,6 +142,7 @@ GEM
     rack (2.0.6)
     rack-proxy (0.6.5)
       rack
+    rack-ssl-enforcer (0.2.9)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.1)
@@ -246,6 +247,7 @@ DEPENDENCIES
   pry-byebug
   pry-rails
   puma
+  rack-ssl-enforcer
   rails (= 5.2.1)
   redis
   sassc-rails
