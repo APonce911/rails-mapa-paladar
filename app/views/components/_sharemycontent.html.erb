@@ -4,8 +4,8 @@
       <%# end %>
     <% unless @user_shared  %>
       <%= form_tag posts_path do %>
-        <%= button_tag(type: "submit", class:'btn btn-success share-class', id:'share-btn') do %>
-          <i class="far fa-eye"></i> Meus Posts
+        <%= button_tag(type: "submit", class:'btn btn-success share-class animated pulse infinite slower', id:'share-btn') do %>
+          <i class="far fa-image" id='post-icon'></i><p class="button-share-text">Meus Posts</p>
         <% end %>
       <% end %>
     <% end %>

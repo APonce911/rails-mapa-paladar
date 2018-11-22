@@ -6,3 +6,32 @@
   font-weight: bold;
   // text-decoration: underline;
 }
+
+.share-class {
+  position: absolute;
+  z-index: 1003;
+  height: 5vh;
+  padding: 50px;
+  width: 1vw;
+  left: 5vw;
+  top: 75vh;
+  border-radius: 50px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0.89;
+}
+
+.button-share-text {
+	position: relative;
+  margin: -2px -37px;
+  bottom: 3vh;
+  font-family: Helvetica;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+#post-icon {
+  position: relative;
+  bottom: 3vh;
+  margin: auto -12px;
+  font-size: 25px;
+}
