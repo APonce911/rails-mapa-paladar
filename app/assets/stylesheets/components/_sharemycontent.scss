@@ -6,3 +6,11 @@
   font-weight: bold;
   // text-decoration: underline;
 }
+
+.share-class {
+  position: absolute;
+  z-index: 1003;
+  width: 50vw;
+  left: 25vw;
+  top:75vh;
+}
