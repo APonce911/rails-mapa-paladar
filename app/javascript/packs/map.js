@@ -256,7 +256,7 @@ if (map) {
     clickable: false,
     map: map,
     icon: myIcon,
-    animation: google.maps.Animation.BOUNCE
+    animation: google.maps.Animation.DROP
   });
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
       var myLocation = new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude);
