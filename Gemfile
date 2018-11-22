@@ -34,4 +34,4 @@ group :development, :test do
   gem 'dotenv-rails'
 end
 
-# gem 'rack-ssl-enforcer', group: :production
+gem 'rack-ssl-enforcer', group: :production
