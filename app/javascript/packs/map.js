@@ -242,6 +242,9 @@ if (map) {
   }
 
   //==========MY LOCATION CODE=================================================
+  const myIcon = require('../../assets/images/marker.png');
+
+  // console.log(myIcon);
 
   const geoOptions = {
     enableHighAccuracy: true,
@@ -252,6 +255,7 @@ if (map) {
   let myMarker = new google.maps.Marker({
     clickable: false,
     map: map,
+    icon: myIcon,
     animation: google.maps.Animation.BOUNCE
   });
   if (navigator.geolocation) navigator.geolocation.getCurrentPosition(function(pos) {
