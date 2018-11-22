@@ -10,9 +10,18 @@
 .share-class {
   position: absolute;
   z-index: 1003;
-  width: 50vw;
-  left: 25vw;
-  top:75vh;
+  height: 5vh;
+  padding: 50px;
+  width: 1vw;
+  left: 5vw;
+  top: 85vh;
   border-radius: 50px;
-  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.1);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+.button-share-text {
+	position: relative;
+	left: -4vh;
+  bottom: 2vh;
+  font-family: Helvetica;
 }
