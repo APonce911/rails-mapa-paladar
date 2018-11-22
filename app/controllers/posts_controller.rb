@@ -9,7 +9,7 @@ class PostsController < ApplicationController
     create_posts
   end
 
-private
+  private
 
   def create_posts
     @posts["data"].each_with_index do |element, index|
