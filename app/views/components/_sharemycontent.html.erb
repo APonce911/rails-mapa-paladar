@@ -1,6 +1,16 @@
     <!-- true 'Share my content' buttom -->
+      <%#= form_tag posts_path do %>
+        <%#= submit_tag 'Compartilhar posts', class: 'share-content', id: 'share-btn'%>
+      <%# end %>
     <% unless @user_shared  %>
       <%= form_tag posts_path do %>
-        <%= submit_tag 'Compartilhar posts', class: 'share-content', id: 'share-btn'%>
+        <%= button_tag(type: "submit", class:'btn btn-success share-class', id:'share-btn') do %>
+          <i class="far fa-eye"></i> Meus Posts
+        <% end %>
       <% end %>
     <% end %>
+
+
+<%#= button_tag(type: "submit", class: "btn btn-default") do %>
+    <!-- Update list <i class="icon-repeat"></i> -->
+<%# end %>

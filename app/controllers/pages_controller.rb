@@ -1,6 +1,6 @@
 
 class PagesController < ApplicationController
-  
+
   skip_before_action :authenticate_user!, only: [:home, :privacypolicy, :components]
 
   def home
@@ -12,6 +12,8 @@ class PagesController < ApplicationController
     # @id = current_user.id
     if current_user
       @user_shared = Post.where(user_id: current_user.id).any?
+    else
+      @user_shared = false
     end
 
 

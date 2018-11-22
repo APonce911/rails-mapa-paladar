@@ -1,6 +1,12 @@
-<p>
-  <%= link_to "Acessar com #{OmniAuth::Utils.camelize(:instagram)}", user_instagram_omniauth_authorize_path, class:"btn btn-success" %>
-</p>
+<!-- <p> -->
+  <%#= link_to "Acessar com #{OmniAuth::Utils.camelize(:instagram)}", user_instagram_omniauth_authorize_path, class:"btn btn-success" %>
+<!-- </p> -->
+<%= link_to user_instagram_omniauth_authorize_path do %>
+  <% x = #{OmniAuth::Utils.camelize(:instagram)} %>
+  <%= x %>
+  <p class="btn btn-success"><i class="fab fa-instagram"></i> Acessar com Instagram </p>
+<% end %>
+
 <p class='privacy-link'>
   <%= link_to 'Política de Privacidade', privacypolicy_path, id: 'privacy-btn'%>
 </p>
