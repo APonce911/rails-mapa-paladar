@@ -14,7 +14,6 @@ a {
 }
 
 .float-page{
-  /* position:absolute; */
   position: absolute;
   left: 0;
   top: 0;
@@ -32,6 +31,16 @@ a {
   background-color: #fcbdbd9c;
 }
 
+// #share-btn {
+//   position: absolute;
+//     z-index: 1003;
 
+// }
 
-
+.share-class {
+  position: absolute;
+  z-index: 1003;
+  width: 50vw;
+  left: 25vw;
+  top:75vh;
+}

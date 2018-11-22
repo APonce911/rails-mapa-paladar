@@ -171,7 +171,6 @@ if (map) {
     const postId = post["id"]
     const lat = post["lat"];
     const lng = post["lng"];
-    // const imageUrl = JSImages[k]["url"]
     const imageUrl = JSImages.filter(post => post.id === postId)[0]['url']
     const restarantName = post["restaurant_name"]
     const text = post["text"]
@@ -237,27 +236,10 @@ if (map) {
     JSPosts.forEach((post) => {
       // let j = i * 500;
       window.setTimeout(function(){
-        displayPostMarker(post)},100 + (i * 500));
+        displayPostMarker(post)},100 + (i * 300));
       i += 1;
     });
   }
-
-  // var arr = [1,2,3,4,5,6,7,8,9,10];
-
-  // function testing(i){
-  //   console.log("test");
-  //   setTimeout(
-  //     function(){
-  //       console.log(i);
-  //     },
-  //     3000
-  //   );
-  // }
-
-  // arr.forEach((i) => {
-  //   testing(i);
-  //   i++;
-  // });
 
   //==========MY LOCATION CODE=================================================
 
@@ -277,7 +259,7 @@ if (map) {
       myMarker.setPosition(myLocation);
       map.setCenter(myLocation)
   }, function(error) {
-      window.alert('Hello dear user, please allow us to access your location');
+      window.alert('Querido usuário, por favor habilite o serviço de localização do seu aparelho');
   }, geoOptions);
 
   // =====CENTER ON ME BUTTOM===================================================
