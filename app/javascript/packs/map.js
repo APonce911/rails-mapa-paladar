@@ -336,18 +336,18 @@ if (map) {
   }
 
   // define JS variable with HTML DOM Element
-  // if(userSignedIn){
+  // if(userSignedIn&!userShared){
   //   let clearButtom = document.getElementById('clearButtom')
   //   clearButtom.addEventListener("click", clearMarkers);
   // };
   //==========ADD MARKERS BUTTOM==============================================
 
-  if(userSignedIn){
+  if(userSignedIn&!userShared){
     let addButtom = document.getElementById('share-btn')
     addButtom.addEventListener("click", displayAllMarkers);
   };
 
-
+  displayAllMarkers();
 };
 
 

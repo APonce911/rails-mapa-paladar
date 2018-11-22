@@ -7,7 +7,7 @@ jQuery(".alert-info" ).slideUp({duration:3000});
 // OU TROCAR A VARIAVEL DE CHECAGEM P/ userShared
 // OU ATUALIZAR MAPA COM JS PRA NÃO DAR RELOAD DA PAGINA
 
-if(userSignedIn){
+if(userSignedIn&!userShared){
   map.classList.remove("unlogged-map");
   // Function to disable share button
   const shareButton = document.getElementById("share-btn")

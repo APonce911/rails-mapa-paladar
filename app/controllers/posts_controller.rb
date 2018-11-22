@@ -17,6 +17,7 @@ private
         # ==============google places parse test
         # puts is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
         # ==============end of test============
+
         @post = Post.create(user_id: current_user.id)
         @post[:ig_id] = element["id"]
         unix_time = element["created_time"].to_i
@@ -104,6 +105,11 @@ private
 
   #   return result
   # end
+
+  def is_new?(ig_id)
+    result =  Post.selec
+    return result
+  end
 
   def define_env
       if current_user.email == "airton_p@mapa.com"
