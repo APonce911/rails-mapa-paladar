@@ -1,10 +1,8 @@
 require 'open-uri'
 
 class PostsController < ApplicationController
-  # before_action :parse_posts
 
   def create
-    # raise
     parse_posts
     create_posts
   end
@@ -13,23 +11,26 @@ class PostsController < ApplicationController
 
   def create_posts
     @posts["data"].each_with_index do |element, index|
+    # Post.all.each_with_index do |element, index|
       if element["location"] != nil
-        # ==============google places parse test
+        if is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
+        #'==============google places parse test'
         # puts is_restaurant?(element["location"]["name"], element["location"]["latitude"], element["location"]["longitude"])
-        # ==============end of test============
+        # puts is_restaurant?(element[:restaurant_name], element[:lat], element[:lng])
+        # '==============end of test============'
 
-        @post = Post.create(user_id: current_user.id)
-        @post[:ig_id] = element["id"]
-        unix_time = element["created_time"].to_i
-        @post[:date] = Time.at(unix_time).to_datetime
-        @post[:text] = element["caption"]["text"]
-        @post[:lat] = element["location"]["latitude"]
-        @post[:lng] = element["location"]["longitude"]
-        @post[:restaurant_name] = element["location"]["name"]
-        @post.save
-        create_images(index)
-        create_comments(@post[:ig_id])
-
+          @post = Post.create(user_id: current_user.id)
+          @post[:ig_id] = element["id"]
+          unix_time = element["created_time"].to_i
+          @post[:date] = Time.at(unix_time).to_datetime
+          @post[:text] = element["caption"]["text"]
+          @post[:lat] = element["location"]["latitude"]
+          @post[:lng] = element["location"]["longitude"]
+          @post[:restaurant_name] = element["location"]["name"]
+          @post.save
+          create_images(index)
+          create_comments(@post[:ig_id])
+        end
       end
     end
     puts "============================import complete======================"
@@ -76,38 +77,36 @@ class PostsController < ApplicationController
     @posts = JSON.parse(posts_serialized)
   end
 
-  # def is_restaurant?(name,lat,lng)
-  #   # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
-  #   url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=1&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
-  #   # url = url.gsub(" ", "%20")
-  #   # infos_serialized = open(url).read
-  #   infos_serialized = scrape(url)
-  #   infos = JSON.parse(infos_serialized)
+  def is_restaurant?(name,lat,lng)
+    # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=10&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
+    infos_serialized = scrape(url)
+    infos = JSON.parse(infos_serialized)
 
-  #   # puts "========================"
-  #   # puts infos
-  #   # puts infos["results"][0]["types"].class
+    if infos["results"] == []
+      types = []
+    else
+      types = infos["results"][0]["types"]
+    end
 
-  #   types = infos["results"][0]["types"]
-  #   # puts types
-  #   accepted_types = ['bar', 'bakery', 'cafe', 'restaurant', 'meal_takeaway', 'supermarket']
-  #   result = (types & accepted_types).any?
-  #   return result
-  # end
+    accepted_types = ['bar', 'bakery', 'cafe', 'food','restaurant', 'meal_takeaway', 'supermarket']
+    result = (types & accepted_types).any?
+    return result
+  end
 
-  # def scrape(url)
-  #   begin
-  #     uri = URI.parse(url)
-  #   rescue URI::InvalidURIError
-  #     uri = URI.parse(URI.escape(url))
-  #   end
-  #   result = open(uri).read
+  def scrape(url)
+    begin
+      uri = URI.parse(url)
+    rescue URI::InvalidURIError
+      uri = URI.parse(URI.escape(url))
+    end
+    result = open(uri).read
 
-  #   return result
-  # end
+    return result
+  end
 
   def is_new?(ig_id)
-    result =  Post.selec
+    result = Post.selec
     return result
   end
 
