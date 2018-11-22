@@ -21,7 +21,16 @@
 
 .button-share-text {
 	position: relative;
-	left: -4vh;
-  bottom: 2vh;
+  left: -4vh;
+  bottom: 3vh;
   font-family: Helvetica;
+  font-weight: lighter;
+  font-size: 15px;
+}
+
+#post-icon {
+  position: relative;
+  bottom: 3vh;
+  margin: auto -12px;
+  font-size: 25px;
 }
