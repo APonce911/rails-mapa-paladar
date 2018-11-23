@@ -113,6 +113,8 @@ class PostsController < ApplicationController
   def define_env
       if current_user.email == "airton_p@mapa.com"
         @env = ENV['INSTAGRAM_ACCESS_TOKEN']
+      elsif current_user.email == "sample_profile02@mapa.com"
+        @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE2']
       else
         @env = ENV['INSTAGRAM_ACCESS_TOKEN_SAMPLE']
       end
