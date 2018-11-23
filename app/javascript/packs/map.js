@@ -196,7 +196,9 @@ if (map) {
       map: map,
       animation: google.maps.Animation.DROP,
       icon:imageMarker
+      // labelClass: "photo-marker"
     })
+
 
     // =======add PostMarker to markers array
     markers.push(PostMarker);
@@ -211,7 +213,9 @@ if (map) {
           '<ul class="post-info">'+
             `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
               `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
-              `<li class="post-info-username">${nickname} | ${date}</li>`+
+              `<li class="post-info-username">${nickname}</li>`+
+              `<li class="post-info-username">$${date}</li>`+
+
             '</ul>'+
         '</div>'+
         `<p>${text}</p>`+
@@ -277,7 +281,7 @@ if (map) {
     firstChild.style.outline = 'none';
     firstChild.style.width = '40px';
     firstChild.style.height = '40px';
-    firstChild.style.borderRadius = '2px';
+    firstChild.style.borderRadius = '10px';
     firstChild.style.boxShadow = '0 1px 4px rgba(0,0,0,0.3)';
     firstChild.style.cursor = 'pointer';
     firstChild.style.marginRight = '10px';
@@ -351,9 +355,15 @@ if (map) {
   //   addButtom.addEventListener("click", displayAllMarkers);
   // };
 
+  // ===========BORDER RADIUS LAYER SETUP=====================================
   displayAllMarkers();
+  var myoverlay = new google.maps.OverlayView();
+  myoverlay.draw = function () {
+    //this assigns an id to the markerlayer Pane, so it can be referenced by CSS
+    this.getPanes().markerLayer.id='markerLayer';
+  };
+  myoverlay.setMap(map);
 };
-
 
 
 
