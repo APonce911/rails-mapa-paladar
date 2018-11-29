@@ -211,11 +211,10 @@ if (map) {
           '<div class="post-info-div">'+
             '<ul class="post-info">'+
               `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
-                `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
-                `<li class="post-info-username">${nickname}</li>`+
-                `<li class="post-info-username">$${date}</li>`+
-
-              '</ul>'+
+              `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
+              `<li class="post-info-username">${nickname}</li>`+
+              `<li class="post-info-username">$${date}</li>`+
+            '</ul>'+
           '</div>'+
           `<p>${text}</p>`+
         '</div>'+
@@ -223,14 +222,8 @@ if (map) {
     // Pop Up Window
     var popup = new google.maps.InfoWindow({
       content: contentString,
-      maxWidth: 320
+      // maxWidth: 320
     });
-
-    // PostMarker.addListener('click', function() {
-    //   popup.open(map, PostMarker);
-
-    // });
-    // ===============================================TEST AREA
 
     var postMarkerClick = function (evt) {
       popup.open(map, PostMarker)
@@ -240,10 +233,8 @@ if (map) {
     }
 
     PostMarker.addListener("click", postMarkerClick);
-    // If true, the window event fires first, if false, the button fires first.
     var useCapture = true;
     window.addEventListener("click", windowClick, useCapture);
-    //=================================================
 
     k += 1
   }
