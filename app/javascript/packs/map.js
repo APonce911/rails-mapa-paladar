@@ -196,7 +196,6 @@ if (map) {
       map: map,
       animation: google.maps.Animation.DROP,
       icon:imageMarker
-      // labelClass: "photo-marker"
     })
 
 
@@ -206,30 +205,36 @@ if (map) {
     //=========POP-UP SECTION============================
     // Body Content
     let contentString =
-    '<div class="popup">'+
-      `<img class="popup-image" src=${imageUrl} >`+
-      '<div>'+
-        '<div class="post-info-div">'+
-          '<ul class="post-info">'+
-            `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
+      '<div class="popup">'+
+        `<img class="popup-image" src=${imageUrl} >`+
+        '<div>'+
+          '<div class="post-info-div">'+
+            '<ul class="post-info">'+
+              `<li class="post-info-item"><img src=${avatar} class="post-avatar"></li>`+
               `<li class="post-info-item"><strong>${restarantName}</strong></li>`+
               `<li class="post-info-username">${nickname}</li>`+
               `<li class="post-info-username">$${date}</li>`+
-
             '</ul>'+
+          '</div>'+
+          `<p>${text}</p>`+
         '</div>'+
-        `<p>${text}</p>`+
-      '</div>'+
-    '</div>';
+      '</div>';
     // Pop Up Window
     var popup = new google.maps.InfoWindow({
       content: contentString,
-      maxWidth: 320
+      // maxWidth: 320
     });
 
-      PostMarker.addListener('click', function() {
-      popup.open(map, PostMarker);
-    });
+    var postMarkerClick = function (evt) {
+      popup.open(map, PostMarker)
+    }
+    var windowClick = function (evt) {
+      popup.close()
+    }
+
+    PostMarker.addListener("click", postMarkerClick);
+    var useCapture = true;
+    window.addEventListener("click", windowClick, useCapture);
 
     k += 1
   }

@@ -10,17 +10,16 @@
   filter: blur(1px);
 }
 
-#popup-image {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 40%;
-}
+// #popup-image {
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 40%;
+// }
 
 .popup {
-  width: 80%;
+  width: 300px;
   display: block;
-/*   padding-right: auto; */
   padding-left: 35px;
 }
 
@@ -28,6 +27,20 @@
   margin-top: 15px;
   width: auto;
   height: 30vh;
+}
+.gm-style .gm-style-iw, .gm-style .gm-style-iw a, .gm-style .gm-style-iw span, .gm-style .gm-style-iw label, .gm-style .gm-style-iw div {
+  max-height: 280px;
+  padding: 0px 10px 5px 5px;
+  overflow-y: scroll;
+  // overflow-x: visible;
+}
+
+.gm-style-iw div {
+  overflow:visible !important;
+}
+
+.gm-ui-hover-effect {
+  visibility: hidden;
 }
 
 .post-avatar {
@@ -61,3 +74,4 @@
 #markerLayer img {
   border-radius:10px;
 }
+
