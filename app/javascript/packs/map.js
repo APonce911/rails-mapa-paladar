@@ -233,8 +233,8 @@ if (map) {
     }
 
     PostMarker.addListener("click", postMarkerClick);
-    var useCapture = true;
-    window.addEventListener("click", windowClick, useCapture);
+    // var useCapture = true;
+    // window.addEventListener("click", windowClick, useCapture);
 
     k += 1
   }
