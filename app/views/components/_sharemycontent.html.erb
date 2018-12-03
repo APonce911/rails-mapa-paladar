@@ -5,11 +5,10 @@
     <% unless @user_shared  %>
       <%= form_tag posts_path do %>
         <%= button_tag(type: "submit", class:'btn btn-success share-class animated pulse infinite slower', id:'share-btn') do %>
-          <i class="far fa-image" id='post-icon'></i><p class="button-share-text">Meus Posts</p>
+          <i class="far fa-eye" id='post-icon'></i><p class="button-share-text">Meus Posts</p>
         <% end %>
       <% end %>
     <% end %>
-
 
 <%#= button_tag(type: "submit", class: "btn btn-default") do %>
     <!-- Update list <i class="icon-repeat"></i> -->

@@ -5,6 +5,7 @@ class PostsController < ApplicationController
   def create
     parse_posts
     create_posts
+    redirect_to root_path
   end
 
   private
@@ -79,7 +80,7 @@ class PostsController < ApplicationController
 
   def is_restaurant?(name,lat,lng)
     # this is working https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=-23.55704,-46.688&radius=1&keyword=high%20line%20bar&key=
-    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=10&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_KEY']
+    url = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location="+lat.to_s+","+lng.to_s+"&radius=10&keyword="+name+"&key="+ENV['GOOGLEMAPS_API_PLACES_KEY']
     infos_serialized = scrape(url)
     infos = JSON.parse(infos_serialized)
 

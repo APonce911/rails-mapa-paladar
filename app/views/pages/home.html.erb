@@ -33,8 +33,7 @@
   let userShared = <%= @user_shared %>
 </script>
 
-<script src="//cdn.muicss.com/mui-latest/js/mui.min.js"></script>
 
-<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_BROWSER_KEY'] %>
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=" + ENV['GOOGLEMAPS_API_MAPS_KEY'] %>
 <%= javascript_pack_tag "map" %>
 

@@ -220,21 +220,21 @@ if (map) {
         '</div>'+
       '</div>';
     // Pop Up Window
-    var popup = new google.maps.InfoWindow({
+    const popup = new google.maps.InfoWindow({
       content: contentString,
       // maxWidth: 320
     });
 
-    var postMarkerClick = function (evt) {
+    const postMarkerClick = function () {
       popup.open(map, PostMarker)
     }
-    var windowClick = function (evt) {
+    const windowClick = function () {
       popup.close()
     }
 
     PostMarker.addListener("click", postMarkerClick);
-    // var useCapture = true;
-    // window.addEventListener("click", windowClick, useCapture);
+    const useCapture = true;
+    window.addEventListener("click", windowClick, useCapture);
 
     k += 1
   }

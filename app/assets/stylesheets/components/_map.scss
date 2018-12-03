@@ -21,6 +21,7 @@
   width: 300px;
   display: block;
   padding-left: 35px;
+  overflow:hidden;
 }
 
 .popup-image {
@@ -40,7 +41,7 @@
 }
 
 .gm-ui-hover-effect {
-  visibility: hidden;
+  // visibility: hidden;
 }
 
 .post-avatar {
