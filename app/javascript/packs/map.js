@@ -27,10 +27,11 @@ if (map) {
     path: "M0,2 C-1.3527075e-16,0.8954305 0.8954305,2.02906125e-16 2,0 L49,0 C51.7614237,4.39800865e-15 54,2.23857625 54,5 L54,50.3964714 C54,51.5010409 53.1045695,52.3964714 52,52.3964714 L19.6172,52.3964714 C19.2555,52.3964714 18.9003,52.4923743 18.5881,52.6744493 L2.59574,62 L2.59574,52.9041748 C2.59574,52.6237893 2.36766,52.3964714 2.0863,52.3964714 L1,52.3964714 C0.44771525,52.3964714 -3.8565838e-15,51.9487562 0,51.3964714 L0,2 Z M5,4 C4.44771525,4 4,4.44771525 4,5 L4,48 C4,48.5522847 4.44771525,49 5,49 L48,49 C48.5522847,49 49,48.5522847 49,48 L49,5 C49,4.44771525 48.5522847,4 48,4 L5,4 Z",
         fillColor: '#DD5A58',
         fillOpacity: 0.9,
-        anchor: new google.maps.Point(0,10),
+        anchor: new google.maps.Point(26,50),
         strokeWeight: 0,
         // scale: iconSize
-        borderStyle: 'solid'
+        borderStyle: 'solid',
+        scale: 1.3
   }
 
   // STYLE
@@ -148,14 +149,10 @@ if (map) {
         zoomControl:true
   })
 
-
-
-
   // Wait for DOM to load
   // SVG.on(document, 'DOMContentLoaded', function() {
   //   var draw = SVG('drawing')
   // })
-
 
   //==========OLD MARKER FUNCTION ==================== Changed to my location code
   // var marker = new google.maps.Marker({ position: myLatlng, map: map, animation: google.maps.Animation.BOUNCE});
@@ -190,6 +187,14 @@ if (map) {
       url: imageUrl,
       scaledSize: new google.maps.Size(60, 60)
     }
+
+        
+    const UnderMarker = new google.maps.Marker({
+      position:{lat,lng},
+      map: map,
+      animation: google.maps.Animation.DROP,
+      icon:icon
+    })
 
     const PostMarker = new google.maps.Marker({
       position:{lat,lng},
